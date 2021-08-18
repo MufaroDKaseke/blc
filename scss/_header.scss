@@ -1,0 +1,63 @@
+// Header
+
+.header {
+
+  .navbar {
+    background: transparent;
+
+    &.header-bg {
+      background: lighten($color-1, 20%);
+      transition: all .5s ease;
+    }
+    
+    .navbar-brand {}
+
+    .navbar-collapse {
+
+      &.show,
+      &.collapsing {
+        @media screen and (max-width: $breakpoint-lg) {
+          background: lighten($color-1, 20%);
+          border-radius: 5px;
+          padding: .5rem;
+          margin-top: 1rem;
+        }
+      }
+    }
+    .nav-item {
+      margin: auto 10px;
+
+      .nav-link {
+        color: $white;
+        font-size: .9rem;
+      }
+
+      &.active {
+        .nav-link {
+          color: $primary; 
+        }
+      }
+
+      &:hover {
+        .nav-link {
+          color: $primary;
+          transition: all .5s ease;
+        }
+      }
+    }
+
+    .dropdown {
+
+      .dropdown-menu {
+        .dropdown-item {
+          font-size: .9rem;
+
+          &:hover {
+            color: $primary;
+            transition: all .5s ease;
+          }
+        }
+      }
+    }
+  }
+}

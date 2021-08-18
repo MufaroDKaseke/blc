@@ -1,0 +1,184 @@
+// Footer
+
+.footer {
+  background: $color-2;
+  padding-top: 5rem;
+
+  .row:first-of-type {
+    margin-bottom: 5rem;
+  }
+
+  .footer-about {
+    text-align: center;
+
+    @media screen and (max-width: $breakpoint-lg) {
+      margin-bottom: 2.5rem;
+    }
+    
+    img {
+      width: 80%;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: $white;
+      text-align: left;
+      font-size: .85rem;
+      @include font("OpenSans-Light");
+    }
+  }
+
+  .footer-social {
+    li {
+      margin: auto 10px;
+    }
+
+    a {
+      color: $white;
+      font-size: 14px;
+      display: inline-block;
+      background: $primary;
+      line-height: 1;
+      padding: 8px 0;
+      margin-right: 4px;
+      text-align: center;
+      width: 30px;
+      height: 30px;
+      transition: 0.3s;
+
+      &:hover {
+        background: $color-8;
+        transition: all .5s ease;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        -o-transition: all .5s ease;
+      }
+    }
+  }
+
+  .footer-links {
+
+    @media screen and (max-width: $breakpoint-lg) {
+      margin-bottom: 2.5rem;
+    }
+
+    h4 {
+      color: $white;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      @include font("OpenSans-Bold");
+    }
+
+    .nav-item {}
+
+    .nav-link {
+      padding: .25rem 0;
+      color: $white;
+      font-size: .85rem;
+
+      i {
+        margin-right: 5px;
+        font-size: .8rem;
+        color: $color-6;
+      }
+
+      &:hover {
+        color: $primary;
+        transition: all .5s ease;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        -o-transition: all .5s ease;
+      }
+    }
+  }
+
+  .footer-contact {
+
+    @media screen and (max-width: $breakpoint-lg) {
+      margin-bottom: 2.5rem;
+    }
+
+    h4 {
+      color: $white;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      @include font("OpenSans-Bold");
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      padding: 5px 0;
+
+      i {
+        color: $color-6;
+        margin-right: 10px;
+        font-size: .8rem;
+      }
+
+      a {
+        color: $white;
+        font-size: .85rem;
+
+        &:hover {
+          color: $primary;
+          transition: all .5s ease;
+        }
+      }
+    }
+  }
+
+  .footer-subscribe {
+    color: $white;
+
+    h4 {
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      @include font("OpenSans-Bold");
+    }
+
+    p {
+      font-size: .8rem;
+      @include font("OpenSans-Light");
+    }
+
+    input[type="email"] {
+      color: $white;
+      background: $color-3;
+      margin-bottom: 1rem;
+      border-radius: 0;
+
+      &:focus,
+      &:focus-within {
+        border: 1px solid $primary;
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    button[type="submit"] {
+    }
+  }
+
+  .footer-copyright {
+    padding: 1rem 0;
+    font-size: .8rem;
+    border-top: 1px solid $color-3;
+    color: $white;
+
+    @media screen and (max-width: $breakpoint-sm) {
+      font-size: .65rem;
+    }
+
+    a {
+      color: $color-6;
+
+      &:hover {
+        color: $primary;
+        transition: all .5s ease;
+      }
+    }
+  }
+}

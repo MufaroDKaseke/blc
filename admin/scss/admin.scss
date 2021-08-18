@@ -1,0 +1,269 @@
+/* Dashboard Stylesheet */
+
+@import './variables';
+@import './mixins';
+
+
+/* Fonts */
+@font-face {
+  font-family: "OpenSans";
+  src: url("../../lib/fonts/Open_Sans/OpenSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../../lib/fonts/Open_Sans/OpenSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: "OpenSans-ExtraBold";
+  src: url("../../lib/fonts/Open_Sans/OpenSans-ExtraBold.ttf");
+}
+
+@font-face {
+  font-family: "OpenSans-Light";
+  src: url("../../lib/fonts/Open_Sans/OpenSans-Light.ttf");
+}
+
+@font-face {
+  font-family: "OpenSans-Italic";
+  src: url("../../lib/fonts/Open_Sans/OpenSans-Italic.ttf");
+}
+
+/* Resets */
+@import './resets';
+
+
+/* Wrapper */
+.wrapper {
+  display: flex;
+}
+
+/* Sidebar*/
+.sidebar-wrapper {
+  min-width: 200px;
+  min-height: 100vh;
+  background: $color-3;
+  display: none;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    //position: absolute;
+    //top: 0;
+    //left: 0;
+    min-width: 230px;
+    //z-index: 10000;
+  }
+
+  &.show-sidebar {
+    display: block;
+  }
+
+  .sidebar-heading {
+    height: 56px;
+    padding: .5rem;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include font("OpenSans-Bold");
+
+    h4 {
+      text-align: center;
+    }
+  }
+
+  .sidebar-nav {
+    .nav-item {
+      &.dropdown {
+
+
+        .dropdown-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          i {
+            font-weight: 300;
+            line-height: 1.5;
+          }
+
+          &::after {
+            display: none;
+          }
+        }
+
+        &.show {
+          .dropdown-toggle {
+            border-left: 3px solid $primary;
+
+            i {
+              transform: rotate(90deg);
+              color: $primary;
+              transition: all .25s ease;
+            }
+          }
+        }
+
+        .dropdown-menu {
+          background: rgba($primary, .1);
+          margin: 0;
+          padding: 0;
+          border: none;
+          border-bottom: 1px solid $primary;
+          transform: none !important;
+          width: 100%;
+          border-radius: 0;
+          position: relative !important;
+        }
+
+        .dropdown-item {
+          color: darken($white, 10%);
+          font-size: .85rem;
+
+          &:hover {
+            color: $primary;
+            background: transparent;
+          }
+        }
+      }
+
+      &.active {
+        .nav-link {
+          color: $primary;
+          border-left: 3px solid $primary;
+          @include font("OpenSans-Bold");
+        }
+      }
+    }
+
+
+
+    .nav-link {
+      color: $white;
+      font-size: .9rem;
+
+      &:hover {
+        border-left: 3px solid $primary;
+        transition: all .25s ease;
+      }
+    }
+  }
+}
+
+/* Page Content Wrapper */
+.page-content-wrapper {
+  width: 100%;
+}
+
+.navbar {
+  justify-content: space-between;
+
+  .tools-nav {
+    .nav-link {
+      color: $black;
+      position: relative;
+
+      &:hover {
+        color: $color-6;
+        transition: all .5s ease;
+      }
+
+      .badge {
+        font-size: 60%;
+        position: absolute;
+        //right: 5px;
+      }
+    }
+  }
+
+  .user-nav {
+    .dropdown-toggle {
+      color: $black;
+    }
+
+    .dropdown-menu {
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+/* Notifications Panel */
+.notification-panel {
+  padding: 1rem 0;
+
+  .notification {
+    .alert {
+      font-size: .9rem;
+    }
+  }
+}
+
+/* Login Page */
+
+.login {
+
+  > .container > .row {
+    min-height: 100vh;
+  }
+
+  #{&}-title {
+    margin-bottom: 1rem;
+    @include font("OpenSans-Bold");
+  }
+
+  #{&}-result {
+    @include font("OpenSans-Bold");
+  }
+
+  label {
+    font-size: .9rem;
+  }
+
+  .input-group {
+    margin-bottom: 1rem;
+  }
+}
+
+
+/* 
+
+Page Content
+
+*/
+
+/* Dash Panel */
+
+.dash-panel {
+
+  .dash-panel-header {
+    border-bottom: 1px solid darken($white, 70%);
+    margin-bottom: 1rem;
+
+    h4 {
+      @include font("OpenSans-Bold");
+    }
+  }
+
+  .dash-panel-action {
+    a {
+      color: $black;
+
+      &:hover {
+        color: $primary;
+        transition: all .5s ease;
+      }
+    }
+  }
+
+  .dash-panel-content {
+
+  }
+
+  table {
+    font-size: .9rem;
+  }
+}

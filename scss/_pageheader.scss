@@ -1,0 +1,28 @@
+// Breadcrumb
+
+.pageheader {
+  background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url('../img/love-to-learn-2.jpg');
+  background-size: cover;
+  background-position: center;
+
+  .row {
+    min-height: 40vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #{&}-title {
+    color: $white;
+    text-align: center;
+    @include font("OpenSans-Bold");
+
+    &:after {
+      content: "";
+      width: 4rem;
+      height: 4px;
+      background: $color-8;
+      display: block;
+      margin: .5rem auto;
+    }
+  }
+}

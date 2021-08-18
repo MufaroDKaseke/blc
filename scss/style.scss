@@ -1,0 +1,440 @@
+/* Main Stylesheet */
+
+@import './variables';
+@import './mixins';
+
+
+/* Fonts */
+@font-face {
+  font-family: "OpenSans";
+  src: url("../lib/fonts/Open_Sans/OpenSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../lib/fonts/Open_Sans/OpenSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: "OpenSans-ExtraBold";
+  src: url("../lib/fonts/Open_Sans/OpenSans-ExtraBold.ttf");
+}
+
+@font-face {
+  font-family: "OpenSans-Light";
+  src: url("../lib/fonts/Open_Sans/OpenSans-Light.ttf");
+}
+
+@font-face {
+  font-family: "OpenSans-Italic";
+  src: url("../lib/fonts/Open_Sans/OpenSans-Italic.ttf");
+}
+
+/* Resets */
+@import './resets';
+
+/* Header */
+@import './header';
+
+/* Breadcrumb */
+@import './pageheader';
+
+/* Hero */
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url('../img/hero-4 (4).jpg');
+  background-size: cover;
+  background-position: center;
+
+  > .container > .row {
+    min-height: 85vh;
+  }
+
+  #{&}-heading {
+    color: $white;
+    font-weight: bold;
+    @include font("OpenSans-Bold");
+
+    @media screen and (max-width: $breakpoint-sm) {
+      font-size: 34px;
+    }
+  }
+
+  #{&}-paragraph {
+    color: darken($white, 10%);
+    @include font("OpenSans-Light");
+  }
+
+  #{&}-btn {
+    border-radius: 0;
+    background: $primary;
+    color: $white;
+    font-weight: 600;
+		font-size: .9rem;
+    padding: .5rem 1rem;
+
+    &:hover {
+      background: $color-8;
+      transition: all .5s ease;
+    }
+  }
+}
+
+.values {
+  background: #f1ebeb;
+  height: 20vh;
+
+  @media screen and (max-width: $breakpoint-lg) {
+    height: auto;
+  }
+
+  .value-container {
+    background: $white;
+    position: absolute;
+    top: -81px;
+    text-align: center;
+    padding: 1rem .75rem;
+    box-shadow: 0px 0px 10px #5959598c;
+
+    &:hover {
+      background: $color-4;
+      color: $white;
+      cursor: pointer;
+      box-shadow: none;
+      transition: all .5s ease;
+    }
+
+    @media screen and (max-width: $breakpoint-lg) {
+      position: relative;
+      top: 0;
+      margin: 1rem auto;
+    }
+  }
+
+  .value-icon {
+    font-size: 1.75rem;
+    margin-bottom: .5rem;
+    color: $primary;
+  }
+
+  .value-title {
+    @include font("OpenSans-Bold");
+  }
+
+  .value-p {
+    @include font("OpenSans-Light");
+  }
+}
+
+.about {
+  background: url('../img/hero.jpg');
+  background-size: cover;
+  background-position: center;
+
+  #{&}-container {
+    background: #000000c7;
+    padding: 4rem;
+
+		@media screen and (max-width: $breakpoint-sm) {
+			padding: 3rem 15px 3rem 15px;
+		}
+  }
+
+  #{&}-title {
+    color: $white;
+    @include font("OpenSans-Bold");
+
+    span {
+      color: $primary;
+    }
+  }
+
+  #{&}-title-p {
+    color: $white;
+    margin-bottom: 1.5rem;
+    @include font("OpenSans-Light");
+  }
+
+  #{&}-p {
+    color: darken($white, 5%);
+  }
+
+}
+
+.materials {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  #{&}-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: $color-4;
+    @include font("OpenSans-Bold");
+
+    &:after {
+      @include afterSectionTitle();
+    }
+  }
+
+  .material-container {
+    padding: 1rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+
+    &:hover {
+      background: $color-4;
+      color: $white;
+      transition: all .5s ease;
+
+      .material-img {
+        box-shadow: none;
+      }
+    }
+
+    @media screen and (max-width: $breakpoint-lg) {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .material-img {
+    margin-bottom: .5rem;
+    box-shadow: 0px 0px 15px #5959598c;
+  }
+
+  .material-name {
+    color: $primary;
+    //font-size: 1.25rem;
+    font-size: 600;
+    display: block;
+    @include font("OpenSans-Bold");
+  }
+
+  .material-author {
+    font-size: .8rem;
+  }
+}
+
+.counters {
+  background: linear-gradient(rgba(0, 25, 0, .7), rgba(0, 25, 0, .7)), url('../img/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+
+  .counter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .counter-number {
+    color: $primary;
+    font-size: 2.25rem;
+
+    &:after {
+      content: "";
+      width: 15px;
+      height: 2px;
+      background: $color-8;
+      display: block;
+      margin: .25rem auto;
+    }
+  }
+
+  .counter-name {
+    color: darken($white, 2%);
+    text-transform: uppercase;
+    @include font("OpenSans-Bold");
+  }
+}
+
+.callout {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  .callout-container {
+    background: url('../img/hero.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .callout-content {
+    padding: 3rem 2rem;
+    background: $color-5;
+
+    span {
+      color: $white;
+    }
+
+    h2 {
+      color: $color-8;
+      @include font("OpenSans-Bold");
+    }
+
+    p {
+      color: $white;
+      margin-bottom: 2.5rem;
+      @include font("OpenSans-Light");
+    }
+
+    a {
+      color: $white;
+
+      &:hover {
+        color: $primary;
+        transition: all .5s ease;
+      }
+    }
+  }
+}
+
+.events {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  #{&}-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: $color-4;
+    @include font("OpenSans-Bold");
+
+     &:after {
+      @include afterSectionTitle();
+    }
+  }
+
+  .event-container {
+    margin-bottom: 3rem;
+
+    .event-img {}
+
+    .card {
+      background: darken($white, 5%);
+      border: none;
+
+      &:hover {
+        background: $color-4;
+        color: $white;
+        transition: all .5s ease;
+
+        .event-name {
+          color: $primary;
+        }
+
+        .event-date .day {
+          color: $color-9;
+        }
+      }
+    }
+
+    .event-date {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: .5rem;
+      background: $color-4;
+      color: $white;
+      border-radius: 5px;
+
+
+      .month {
+        font-size: .9rem;
+        @include font("OpenSans-Light");
+      }
+
+      .day {
+        font-size: 1.5rem;
+        @include font("OpenSans-Bold");
+      }
+    }
+
+    .event-name {
+      color: $color-4;
+      text-transform: capitalize;
+      @include font("OpenSans-Bold");
+    }
+
+    .event-desc {
+
+    }
+  }
+}
+
+.package {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  #{&}-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    @include font("OpenSans-Bold");
+    color: $color-4;
+
+    &:after {
+      @include afterSectionTitle();
+    }
+  }
+
+  #{&}-container {
+    text-align: center;
+    background: darken($white, 5%);
+    padding: 2rem 1rem;
+    margin: 1.5rem;
+
+    &:hover {
+      background: $color-4;
+      color: $white;
+      transition: all .5s ease;
+
+      .package-name {
+        color: $primary;
+      }
+    }
+
+    @media screen and (max-width: $breakpoint-lg) {
+      margin: 0 0 1.5rem 0;
+    }
+  }
+
+  #{&}-name {
+    color: $color-5;
+  }
+
+  #{&}-value {
+    font-size: 2rem;
+    margin-bottom: 0;
+    @include font("OpenSans-Bold");
+  }
+
+  #{&}-plan {
+    color: $color-8;
+  }
+
+  #{&}-items {
+    margin: 1.5rem auto;
+    li {
+      font-size: .85rem;
+      margin: 5px auto;
+    }
+  }
+
+  #{&}-btn {
+    background: $primary;
+    color: $white;
+    border-radius: 0px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      background: $color-8;
+      transition: all .5s ease;
+    }
+  }
+}
+
+/* Footer */
+@import './footer';

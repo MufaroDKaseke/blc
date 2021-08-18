@@ -1,0 +1,75 @@
+// Library Page
+
+@import './variables';
+@import './mixins';
+
+
+.library-filters {
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+
+  > .container {
+    padding: 0 2rem;
+  }
+
+  .filter-container {
+    @media screen and (max-width: $breakpoint-lg) {
+      margin-bottom: .25rem;
+    }
+  }
+
+  .filter-search {
+    .search-btn {
+     border-radius: 0;
+     background: $primary;
+     color: $white;
+     font-weight: 600;
+     font-size: .9rem;
+
+     &:hover {
+      color: $white;
+      background: $color-8;
+      transition: all .5s ease;
+    }
+  }
+}
+}
+
+.library-books {
+  .material-container {
+    padding: 1rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+
+    &:hover {
+      background: $color-4;
+      color: $white;
+      transition: all .5s ease;
+
+      .material-img {
+        box-shadow: none;
+      }
+    }
+
+    @media screen and (max-width: $breakpoint-lg) {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .material-img {
+    margin-bottom: .5rem;
+    box-shadow: 0px 0px 15px #5959598c;
+  }
+
+  .material-name {
+    color: $primary;
+    //font-size: 1.25rem;
+    font-size: 600;
+    display: block;
+    @include font("OpenSans-Bold");
+  }
+
+  .material-author {
+    font-size: .8rem;
+  }
+}

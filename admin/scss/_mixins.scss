@@ -1,0 +1,14 @@
+// Mixins
+
+@mixin font($font-name, $fallback-font: Arial, $generic-name: sans-serif) {
+  font-family: $font-name ,$fallback-font ,$generic-name;
+}
+
+@mixin afterSectionTitle() {
+  content: "";
+  width: 3rem;
+  height: 4px;
+  background: $color-8;
+  display: block;
+  margin: .5rem auto;
+}

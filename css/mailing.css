@@ -1,0 +1,9 @@
+.subscribe > .container > .row {
+  min-height: 100vh;
+}
+.subscribe .subscribe-title {
+  margin-bottom: 1.5rem;
+  font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+
+/*# sourceMappingURL=mailing.css.map */

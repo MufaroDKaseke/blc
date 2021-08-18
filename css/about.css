@@ -1,0 +1,81 @@
+.aboutus {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+@media screen and (max-width: 992px) {
+  .aboutus .aboutus-img {
+    margin-bottom: 1.5rem;
+  }
+}
+.aboutus .aboutus-content .aboutus-title {
+  font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+.team .team-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #052505;
+  font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+.team .team-title:after {
+  content: "";
+  width: 3rem;
+  height: 4px;
+  background: #FFDF00;
+  display: block;
+  margin: 0.5rem auto;
+}
+.team .team-member {
+  text-align: center;
+  padding: 1rem;
+}
+.team .team-member .team-member-img {
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+.team .team-member .team-member-img img {
+  width: 100%;
+}
+.team .team-member .team-member-social {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+}
+.team .team-member .team-member-social a {
+  color: #fff;
+  font-size: 14px;
+  display: inline-block;
+  background: #00FF00;
+  line-height: 1;
+  padding: 10px 0;
+  margin-bottom: 4px;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  transition: 0.3s;
+}
+.team .team-member .team-member-social a:hover {
+  background: #FFDF00;
+  transition: all 0.5s ease;
+}
+.team .team-member:hover .team-member-img img {
+  filter: brightness(0.5);
+  transition: all 0.5s ease;
+}
+.team .team-member:hover .team-member-social {
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.team .team-member .team-member-name {
+  color: #052505;
+  display: block;
+  font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+.team .team-member .team-member-name:hover {
+  color: #00FF00;
+  transition: all 0.5s ease;
+}
+
+/*# sourceMappingURL=about.css.map */

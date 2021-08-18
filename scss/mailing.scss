@@ -1,0 +1,20 @@
+// Mailing
+
+@import './variables';
+@import './mixins';
+
+.subscribe {
+
+  > .container > .row {
+    min-height: 100vh;
+  }
+
+  .confirm-container {
+
+  }
+
+  #{&}-title {
+    margin-bottom: 1.5rem;
+    @include font("OpenSans-Bold");
+  }
+}

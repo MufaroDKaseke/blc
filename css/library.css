@@ -1,0 +1,58 @@
+.library-filters {
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+.library-filters > .container {
+  padding: 0 2rem;
+}
+@media screen and (max-width: 992px) {
+  .library-filters .filter-container {
+    margin-bottom: 0.25rem;
+  }
+}
+.library-filters .filter-search .search-btn {
+  border-radius: 0;
+  background: #00FF00;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.library-filters .filter-search .search-btn:hover {
+  color: #fff;
+  background: #FFDF00;
+  transition: all 0.5s ease;
+}
+
+.library-books .material-container {
+  padding: 1rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+.library-books .material-container:hover {
+  background: #052505;
+  color: #fff;
+  transition: all 0.5s ease;
+}
+.library-books .material-container:hover .material-img {
+  box-shadow: none;
+}
+@media screen and (max-width: 992px) {
+  .library-books .material-container {
+    margin-bottom: 1.5rem;
+  }
+}
+.library-books .material-img {
+  margin-bottom: 0.5rem;
+  box-shadow: 0px 0px 15px #5959598c;
+}
+.library-books .material-name {
+  color: #00FF00;
+  font-size: 600;
+  display: block;
+  font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+.library-books .material-author {
+  font-size: 0.8rem;
+}
+
+/*# sourceMappingURL=library.css.map */
