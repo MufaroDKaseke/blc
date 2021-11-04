@@ -7,6 +7,8 @@ require '../includes/config.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Babbel Language Center | Register</title>
+  <meta name="description" content="Register for German classes by downloading the registration form here and then send it back to info@blc.co.zw for processing and placement.">
+  <meta name="keywords" content="register,registration,form,enrol,downlaod,Babbel,Language,Center,German,language,lesssons,learn,read,write,speak,Harare,Zimbabwe">
   <!-- Libraries -->
   <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../lib/font-awesome/css/all.min.css">
@@ -15,14 +17,44 @@ require '../includes/config.php';
   <link rel="stylesheet" href="../css/register.css">
   <!-- Favicons -->
   <?php DISPLAY_ICONS();?>
+
+  <!-- Indexing Details -->
+  <link href="https://blc.co.zw/register/" rel="canonical" />
+  <!-- Required Open Graph data -->
+  <meta property="og:title" content="Babbel Language Center - Language School" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="<?=ROOT;?>/img/logo/logo-text.png" />
+  <meta property="og:url" content="<?=ROOT;?>" />
+  <!-- Optional Open Graph data -->
+  <!--<meta property="og:audio" content="https://example.com/guide.mp3." />-->
+  <meta property="og:description" content="Register for German classes by downloading the registration form here and then send it back to info@blc.co.zw for processing and placement." />
+  <meta property="og:site_name" content="Babbel Language Center" />
+  <meta property="og:locale" content="en_us" />
+  <!--<meta property="og:video" content="https://example.com/guide.mp4" />-->
+  <!-- Find additional markup on https://ogp.me -->
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@babbellanguagecenter">
+  <meta name="twitter:domain" content="<?=ROOT;?>">
+  <meta name="twitter:title" content="Babbel Language Center | Register">
+  <meta name="twitter:description" content="Register for German classes by downloading the registration form here and then send it back to info@blc.co.zw for processing and placement.">
+  <meta name="twitter:image" content="<?=ROOT;?>/img/logo/logo-text.png">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <!-- End Of Indexing Details -->
 </head>
 <body>
 
-<header class="header">
+  <!-- Preloader -->
+  <?php
+  require '../includes/preloader.php';
+  ?>
+
+  <!-- Header -->
+  <header class="header">
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
       <div class="container">
         <a class="navbar-brand" href="<?=ROOT;?>">
-          <img src="<?=ROOT;?>/img/logo/logo-text.png" width="120" alt="" loading="lazy">
+          <img src="<?=ROOT;?>/img/logo/logo-text.png" width="120" alt="Babbel Language Center logo" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -44,7 +76,10 @@ require '../includes/config.php';
                 Library
               </a>
               <div class="dropdown-menu" aria-labelledby="libraryDropdown">
-                <a class="dropdown-item" href="<?=ROOT;?>/library/">Materials</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/">All Materials</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/A1-German.php">A1 German</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/A2-German.php">A2 German</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/B1-German.php">B1 German</a>
               </div>
             </li>
             <li class="nav-item">
@@ -53,13 +88,13 @@ require '../includes/config.php';
             <li class="nav-item">
               <a class="nav-link" href="<?=ROOT;?>/contact/">Contact</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="d-lg-none">Account</span><i class="fa fa-user-circle d-none d-lg-inline"></i>
               </a>
               <div class="dropdown-menu" aria-labelledby="accountDropdown">
                 <a class="dropdown-item" href="<?=ROOT;?>/dashboard/login.php">Login</a>
-                <a class="dropdown-item" href="<?=ROOT;?>/register/">Register</a>
+                <a class="dropdown-item active" href="<?=ROOT;?>/register/">Register <span class="sr-only">(current)</span></a>
               </div>
             </li>
           </ul>

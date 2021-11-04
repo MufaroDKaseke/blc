@@ -1,5 +1,6 @@
 <?php
 require '../includes/config.php';
+require './includes/user_session.php';
 require '../includes/db_connect.php';
 require './includes/functions.php';
 ?>
@@ -14,6 +15,8 @@ require './includes/functions.php';
   <link rel="stylesheet" href="<?php echo ROOT?>/lib/font-awesome/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="<?php echo ROOT?>/admin/css/admin.css">
+  <!-- Favicons -->
+  <?php DISPLAY_ICONS();?>
 </head>
 <body>
 
@@ -164,7 +167,7 @@ require './includes/functions.php';
                   <h4>Users <span class="text-muted">(students)</span></h4>
                   <div class="dash-panel-action">
                     <!-- Button trigger modal -->
-                    <a href="" data-toggle="modal" data-target="#addStudentModal">Add New</a>
+                    <a href="" data-toggle="modal" data-target="#addStudentModal"><i class="fa fa-plus"></i> Add New</a>
                   </div>
                 </div>
                 <div class="dash-panel-content">
@@ -180,18 +183,29 @@ require './includes/functions.php';
                     </thead>
                     <tbody>
                       <?php
-                      foreach (getAllStudents($conn) as $student) {
-                        $student = (object) $student;
+
+                      $students = getAllStudents($conn);
+
+                      if ($students !== false) {
+                        foreach ($students as $student) {
+                          $student = (object) $student;
+                          ?>
+                          <tr>
+                            <th scope="row"><?php echo $student->student_id?></th>
+                            <td><?php echo $student->name?></td>
+                            <td><?php echo $student->username?></td>
+                            <td><?php echo $student->password?></td>
+                            <td>
+                              <button class="btn btn-sm btn-success" onclick="updateStudent('<?php echo $student->student_id?>')">Update</button>
+                              <a href="students.php?action=delete_student&student_id=<?php echo $student->student_id?>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                          </tr>
+                          <?php
+                        }
+                      } else {
                         ?>
                         <tr>
-                          <th scope="row"><?php echo $student->student_id?></th>
-                          <td><?php echo $student->name?></td>
-                          <td><?php echo $student->username?></td>
-                          <td><?php echo $student->password?></td>
-                          <td>
-                            <button class="btn btn-sm btn-success" onclick="updateStudent('<?php echo $student->student_id?>')">Update</button>
-                            <a href="students.php?action=delete_student&student_id=<?php echo $student->student_id?>" class="btn btn-sm btn-danger">Delete</a>
-                          </td>
+                          <th colspan="5" class="text-muted text-center">No Students yet</th>
                         </tr>
                         <?php
                       }
@@ -229,7 +243,7 @@ require './includes/functions.php';
             </button>
           </div>
           <div class="modal-body">
-            <form action="" method="post">
+            <form action="./students.php" method="post">
               <div class="form-row">
                 <div class="col-12">
                   <label for="">Name Of Student</label>

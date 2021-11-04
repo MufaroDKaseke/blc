@@ -155,7 +155,7 @@ a:hover {
 
 /* Hero */
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("../img/hero-4 (4).jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("../img/hero-bg.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -233,13 +233,14 @@ a:hover {
 }
 
 .about {
-  background: url("../img/hero.jpg");
+  background: url("../img/hero-3.jpg");
   background-size: cover;
   background-position: center;
 }
 .about .about-container {
-  background: #000000c7;
+  background: rgba(0, 0, 0, 0.8);
   padding: 4rem;
+  box-shadow: 0 0 5px #000;
 }
 @media screen and (max-width: 576px) {
   .about .about-container {
@@ -304,8 +305,10 @@ a:hover {
 }
 .materials .material-name {
   color: #00FF00;
-  font-size: 600;
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-family: "OpenSans-Bold", Arial, sans-serif;
 }
 .materials .material-author {
@@ -313,7 +316,7 @@ a:hover {
 }
 
 .counters {
-  background: linear-gradient(rgba(0, 25, 0, 0.7), rgba(0, 25, 0, 0.7)), url("../img/hero.jpg");
+  background: linear-gradient(rgba(0, 25, 0, 0.9), rgba(0, 25, 0, 0.9)), url("../img/counter.jpg");
   background-size: cover;
   background-position: center;
   padding-top: 1.5rem;
@@ -323,6 +326,11 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .counters .counter-container {
+    margin-bottom: 1.25rem;
+  }
 }
 .counters .counter-number {
   color: #00FF00;
@@ -347,7 +355,7 @@ a:hover {
   padding-bottom: 3rem;
 }
 .callout .callout-container {
-  background: url("../img/hero.jpg");
+  background: url("../img/callout.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -375,6 +383,7 @@ a:hover {
   transition: all 0.5s ease;
 }
 
+/* Events */
 .events {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -425,6 +434,7 @@ a:hover {
   border-radius: 5px;
 }
 .events .event-container .event-date .month {
+  text-transform: uppercase;
   font-size: 0.9rem;
   font-family: "OpenSans-Light", Arial, sans-serif;
 }
@@ -435,8 +445,12 @@ a:hover {
 .events .event-container .event-name {
   color: #052505;
   text-transform: capitalize;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.25rem;
   font-family: "OpenSans-Bold", Arial, sans-serif;
 }
+/* Pricing */
 .package {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -565,6 +579,13 @@ a:hover {
   margin-bottom: 1rem;
   text-transform: uppercase;
   font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+.footer .footer-links .nav-item {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%;
+  width: 50%;
 }
 .footer .footer-links .nav-link {
   padding: 0.25rem 0;

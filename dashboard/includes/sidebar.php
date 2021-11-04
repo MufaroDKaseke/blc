@@ -15,6 +15,9 @@
     <li class="nav-item">
       <a href="<?php echo ROOT;?>/dashboard/videos.php" class="nav-link">Videos</a>
     </li>
+    <li class="nav-item">
+      <a href="<?php echo ROOT;?>/dashboard/profile.php" class="nav-link">Profile</a>
+    </li>
 <!--<li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="libraryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span>Users</span><i class="fa fa-angle-right"></i>

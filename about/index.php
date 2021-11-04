@@ -7,6 +7,8 @@ require '../includes/config.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Babbel Language Center | About</title>
+  <meta name="description" content="Who Are We. About Us. Babbel Language Center is a language school where you can learn how to write and speak foreign languages and get access to opportunities and programs abroad.">
+  <meta name="keywords" content="about,who,team,Babbel,Language,Center,German,language,lesssons,learn,read,write,speak,Harare,Zimbabwe">
   <!-- Libraries -->
   <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../lib/font-awesome/css/all.min.css">
@@ -15,14 +17,45 @@ require '../includes/config.php';
   <link rel="stylesheet" href="../css/about.css">
   <!-- Favicons -->
   <?php DISPLAY_ICONS();?>
+
+  <!-- Indexing Details -->
+  <link href="https://blc.co.zw/about/" rel="canonical" />
+  <!-- Required Open Graph data -->
+  <meta property="og:title" content="Babbel Language Center - Language School" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="<?=ROOT;?>/img/logo/logo-text.png" />
+  <meta property="og:url" content="<?=ROOT;?>" />
+  <!-- Optional Open Graph data -->
+  <!--<meta property="og:audio" content="https://example.com/guide.mp3." />-->
+  <meta property="og:description" content="Who Are We. About Us. Babbel Language Center is a language school where you can learn how to write and speak foreign languages and get access to opportunities and programs abroad." />
+  <meta property="og:site_name" content="Babbel Language Center" />
+  <meta property="og:locale" content="en_us" />
+  <!--<meta property="og:video" content="https://example.com/guide.mp4" />-->
+  <!-- Find additional markup on https://ogp.me -->
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@babbellanguagecenter">
+  <meta name="twitter:domain" content="<?=ROOT;?>">
+  <meta name="twitter:title" content="Babbel Language Center | About">
+  <meta name="twitter:description" content="Who Are We. About Us. Babbel Language Center is a language school where you can learn how to write and speak foreign languages and get access to opportunities and programs abroad.">
+  <meta name="twitter:image" content="<?=ROOT;?>/img/logo/logo-text.png">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <!-- End Of Indexing Details -->
+  
 </head>
 <body>
 
+  <!-- Preloader -->
+  <?php
+  require '../includes/preloader.php';
+  ?>
+
+  <!-- Header -->
   <header class="header">
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
       <div class="container">
         <a class="navbar-brand" href="<?=ROOT;?>">
-          <img src="<?=ROOT;?>/img/logo/logo-text.png" width="120" alt="" loading="lazy">
+          <img src="<?=ROOT;?>/img/logo/logo-text.png" width="120" alt="Babbel Language Center logo" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -44,7 +77,10 @@ require '../includes/config.php';
                 Library
               </a>
               <div class="dropdown-menu" aria-labelledby="libraryDropdown">
-                <a class="dropdown-item" href="<?=ROOT;?>/library/">Materials</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/">All Materials</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/A1-German.php">A1 German</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/A2-German.php">A2 German</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/B1-German.php">B1 German</a>
               </div>
             </li>
             <li class="nav-item">
@@ -82,16 +118,16 @@ require '../includes/config.php';
   <section class="aboutus">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-6">
+        <div class="col-lg-5">
           <div class="aboutus-img">
-            <img src="../img/hero.jpg" alt="" class="img-fluid">
+            <img src="../img/about.jpg" alt="about babbel image" class="img-fluid">
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-7">
           <div class="aboutus-content">
-            <h2 class="aboutus-title">The Best Of The Best</h2>
-            <p class="aboutus-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quod minus esse dolore, dolorum vero illum, a nostrum earum labore cumque nihil? Ea, rem adipisci minima, eaque, autem accusamus vel dicta atque placeat, tenetur aperiam ratione et veritatis! Nemo, cum? Deserunt et ipsa odio optio temporibus dolorem officia blanditiis dicta?</p>
-          </div>
+            <h2 class="aboutus-title">What We Do</h2>
+            <p class="aboutus-paragraph">Babbel Language Center is a language school where you can learn how to write and speak foreign languages and get access to opportunities and programs abroad.</p>
+          </div><p class="aboutus-paragraph">We advance internationalization at BLC by providing high quality language instruction, cultural programming and academice exchange. We serve students preparing for their career opportunities, through innovative teaching and experiential learning.</p>
         </div>
       </div>
     </div>
@@ -116,8 +152,8 @@ require '../includes/config.php';
               </div>
             </div>
             <div class="team-member-info">
-              <a href="#" class="team-member-name h5">Mufaro Kaseke</a>
-              <span class="team-member-title">CEO</span>
+              <a href="#" class="team-member-name">Tafadzwa</a>
+              <span class="team-member-title">Director</span>
             </div>
           </div>
         </div>
@@ -132,8 +168,8 @@ require '../includes/config.php';
               </div>
             </div>
             <div class="team-member-info">
-              <a href="#" class="team-member-name h5">Mufaro Kaseke</a>
-              <span class="team-member-title">CEO</span>
+              <a href="#" class="team-member-name">Mercy</a>
+              <span class="team-member-title">Marketing &amp; Placement</span>
             </div>
           </div>
         </div>
@@ -148,8 +184,8 @@ require '../includes/config.php';
               </div>
             </div>
             <div class="team-member-info">
-              <a href="#" class="team-member-name h5">Mufaro Kaseke</a>
-              <span class="team-member-title">CEO</span>
+              <a href="#" class="team-member-name">Ruth</a>
+              <span class="team-member-title">Senior Teacher</span>
             </div>
           </div>
         </div>
@@ -164,8 +200,8 @@ require '../includes/config.php';
               </div>
             </div>
             <div class="team-member-info">
-              <a href="#" class="team-member-name h5">Mufaro Kaseke</a>
-              <span class="team-member-title">CEO</span>
+              <a href="#" class="team-member-name">Name Surname</a>
+              <span class="team-member-title">Position</span>
             </div>
           </div>
         </div>

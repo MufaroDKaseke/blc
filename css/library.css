@@ -47,12 +47,25 @@
 }
 .library-books .material-name {
   color: #00FF00;
-  font-size: 600;
+  font-size: 0.8rem;
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-family: "OpenSans-Bold", Arial, sans-serif;
 }
+@media screen and (max-width: 768px) {
+  .library-books .material-name {
+    font-size: 1rem;
+  }
+}
 .library-books .material-author {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+}
+@media screen and (max-width: 768px) {
+  .library-books .material-author {
+    font-size: 0.9rem;
+  }
 }
 
 /*# sourceMappingURL=library.css.map */

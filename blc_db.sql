@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2021 at 09:05 PM
+-- Generation Time: Aug 26, 2021 at 09:56 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -56,8 +56,7 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`ID`, `code`, `title`, `date`, `description`, `caption`, `link`, `entry_date`) VALUES
-(4, '6100ca7c26310', 'Babel Language Centre', '2021-07-14 22:03:00', 'Test string           ', 'ecap_6100ca7c26310.png', 'http://event.com', '2021-07-27 21:09:48'),
-(6, '6100ccdad46f4', 'Babel Language Centre', '2021-07-30 00:19:00', 'What is this.', 'ecap_6100ccdad46f4.png', 'http://kjrejkrkerje/ejekrj', '2021-07-27 21:19:54');
+(6, '6100ccdad46f4', 'Example Event', '2021-07-30 00:19:00', 'An example of an event description that is a bit long and too long to fit well', 'ecap_6100ccdad46f4.jpg', 'http://kjrejkrkerje/ejekrj', '2021-07-27 21:19:54');
 
 -- --------------------------------------------------------
 
@@ -82,7 +81,7 @@ CREATE TABLE `materials` (
 --
 
 INSERT INTO `materials` (`ID`, `code`, `title`, `author`, `pub_date`, `category`, `preview`, `link`, `entry_date`) VALUES
-(2, '6101c0fca210c', 'Ormofo Tech', 'Mufaro D Kaseke', '2021-07-04 17:41:00', 'Book', 'mcap_6101c0fca210c.jpg', 'mat_6101c0fca210c.pdf', '2021-07-28 14:41:32');
+(3, '6125988c84210', 'Example Material', 'Example Author', '2021-08-18 19:10:00', 'A2 German', 'mcap_6125988c84210.jpg', 'mat_6125988c84210.pdf', '2021-08-24 19:10:36');
 
 -- --------------------------------------------------------
 
@@ -104,7 +103,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`ID`, `student_id`, `name`, `username`, `password`, `entry_date`) VALUES
-(7, '610224031b159', 'Mufaro D Kaseke', 'mufaro', 'mufarokaseke', '2021-07-28 21:44:03');
+(11, '61259cbfd74d5', 'Mufaro D Kaseke', 'mufaro', 'mufarokaseke', '2021-08-24 19:28:31');
 
 -- --------------------------------------------------------
 
@@ -126,8 +125,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `user_id`, `name`, `username`, `password`, `entry_date`) VALUES
-(1, '8923923', 'Mufaro D Kaseke', 'mufaro', 'mufarokaseke', '2021-07-31 16:02:05'),
-(2, '94859485', 'Lorraine Mafukidze', 'lorraine', 'lorraine', '2021-07-31 17:12:21');
+(3, '61259d8c16b48', 'Mufaro D Kaseke', 'mufaro', 'mufarokaseke', '2021-08-24 19:31:56'),
+(5, '6125a229ead8b', 'Tafadzwa Mukonda', 'tafa', 'tafa', '2021-08-24 19:51:37');
 
 -- --------------------------------------------------------
 
@@ -150,7 +149,7 @@ CREATE TABLE `videos` (
 --
 
 INSERT INTO `videos` (`ID`, `code`, `title`, `description`, `caption`, `link`, `entry_date`) VALUES
-(6, '6104abeebc675', 'Babel Language', 'This is a test video', 'vcap_6104abeebc675.jpg', 'vid_6104abeebc675.mp4', '2021-07-30 19:48:30');
+(7, '6123f51dac24b', 'Example Video', 'Just an example video', 'vcap_6123f51dac24b.jpg', 'vid_6123f51dac24b.mp4', '2021-08-23 13:21:01');
 
 --
 -- Indexes for dumped tables
@@ -212,25 +211,25 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `materials`
 --
 ALTER TABLE `materials`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

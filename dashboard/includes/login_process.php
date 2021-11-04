@@ -48,7 +48,7 @@ if (isset($_POST['action'])) {
     } else {
       session_start(['cookie_lifetime' => 86400]);
       $_SESSION['login_status'] = true;
-      $_SESSION['user_type'] = 'students';
+      $_SESSION['user_type'] = 'student';
       $_SESSION += $student;
       loginSuccess();
     }

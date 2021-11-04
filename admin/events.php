@@ -1,5 +1,6 @@
 <?php
 require '../includes/config.php';
+require './includes/user_session.php';
 require '../includes/db_connect.php';
 require './includes/functions.php';
 ?>
@@ -14,6 +15,8 @@ require './includes/functions.php';
   <link rel="stylesheet" href="<?php echo ROOT?>/lib/font-awesome/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="<?php echo ROOT?>/admin/css/admin.css">
+  <!-- Favicons -->
+  <?php DISPLAY_ICONS();?>
 </head>
 <body>
 
@@ -166,7 +169,7 @@ require './includes/functions.php';
                   <h4>Events</h4>
                   <div class="dash-panel-action">
                     <!-- Button trigger modal -->
-                    <a href="" data-toggle="modal" data-target="#createEventModal">Add Event</a>
+                    <a href="" data-toggle="modal" data-target="#createEventModal"><i class="fa fa-calendar-day"></i> Add Event</a>
                   </div>
                 </div>
                 <div class="dash-panel-content">
@@ -196,20 +199,29 @@ require './includes/functions.php';
                         </td>
                       </tr>-->
                       <?php
-                      foreach (getAllEvents($conn) as $event) {
-                        $event =  (object) $event;
+                      $events = getAllEvents($conn);
+                      if ($events !== false) {
+                        foreach ($events as $event) {
+                          $event =  (object) $event;
+                          ?>
+                          <tr>
+                            <th scope="row"><?php echo $event->code;?></th>
+                            <td><img src="../uploads/captions/<?php echo $event->caption;?>" alt="" width="70px"></td>
+                            <td><?php echo $event->title;?></td>
+                            <td><?php echo $event->description;?></td>
+                            <td><?php echo $event->date;?></td>
+                            <td><a href="<?php echo $event->link;?>" target="_blank">Open</a></td>
+                            <td>
+                              <button class="btn btn-sm btn-success" onclick="updateEvent('<?php echo $event->code;?>')">Update</button>
+                              <a href="events.php?action=delete_event&code=<?php echo $event->code;?>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                          </tr>
+                          <?php
+                        }
+                      } else {
                         ?>
                         <tr>
-                          <th scope="row"><?php echo $event->code;?></th>
-                          <td><img src="../uploads/captions/<?php echo $event->caption;?>" alt="" width="70px"></td>
-                          <td><?php echo $event->title;?></td>
-                          <td><?php echo $event->description;?></td>
-                          <td><?php echo $event->date;?></td>
-                          <td><a href="<?php echo $event->link;?>" target="_blank">Open</a></td>
-                          <td>
-                            <button class="btn btn-sm btn-success" onclick="updateEvent('<?php echo $event->code;?>')">Update</button>
-                            <a href="events.php?action=delete_event&code=<?php echo $event->code;?>" class="btn btn-sm btn-danger">Delete</a>
-                          </td>
+                          <th colspan="7" class="text-muted text-center">No Events yet</th>
                         </tr>
                         <?php
                       }

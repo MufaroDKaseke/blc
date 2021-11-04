@@ -6,12 +6,12 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       </li>
-      <li class="nav-item">
+      <!--<li class="nav-item">
         <a href="<?php echo ROOT;?>/dashboard/notifications.php" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-pill badge-success">6</span></a>
       </li>
       <li class="nav-item">
         <a href="<?php echo ROOT;?>/dashboard/messages.php" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-pill badge-success">20+</span></a>
-      </li>
+      </li>-->
     </ul>
   </div>
   <div class="user-nav">

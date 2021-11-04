@@ -1,5 +1,6 @@
 <?php
 require '../includes/config.php';
+require './includes/user_session.php';
 require '../includes/db_connect.php';
 require './includes/functions.php';
 ?>
@@ -14,6 +15,8 @@ require './includes/functions.php';
   <link rel="stylesheet" href="<?php echo ROOT?>/lib/font-awesome/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="<?php echo ROOT?>/admin/css/admin.css">
+  <!-- Favicons -->
+  <?php DISPLAY_ICONS();?>
 </head>
 <body>
 
@@ -188,21 +191,32 @@ require './includes/functions.php';
                   </thead>
                   <tbody>
                     <?php
-                    foreach (getAllMaterials($conn) as $material) {
-                      $material = (object) $material;
+
+                    $materials = getAllMaterials($conn);
+
+                    if ($materials !== false) {
+                      foreach ($materials as $material) {
+                        $material = (object) $material;
+                        ?>
+                        <tr>
+                          <th scope="row"><?php echo $material->code;?></th>
+                          <td><img src="../uploads/captions/<?php echo $material->preview;?>" alt="" width="30px"></td>
+                          <td><?php echo $material->title;?></td>
+                          <td><?php echo $material->author;?></td>
+                          <td><?php echo $material->pub_date;?></td>
+                          <td><?php echo $material->category;?></td>
+                          <td><a href="../uploads/materials/<?php echo $material->link;?>" target="_blank">View</a></td>
+                          <td>
+                            <button class="btn btn-sm btn-success" onclick="updateMaterial('<?php echo $material->code;?>')">Update</button>
+                            <a href="materials.php?action=delete_material&code=<?php echo $material->code;?>" class="btn btn-sm btn-danger">Delete</a>
+                          </td>
+                        </tr>
+                        <?php
+                      }
+                    } else {
                       ?>
                       <tr>
-                        <th scope="row"><?php echo $material->code;?></th>
-                        <td><img src="../uploads/captions/<?php echo $material->preview;?>" alt="" width="30px"></td>
-                        <td><?php echo $material->title;?></td>
-                        <td><?php echo $material->author;?></td>
-                        <td><?php echo $material->pub_date;?></td>
-                        <td><?php echo $material->category;?></td>
-                        <td><a href="../uploads/materials/<?php echo $material->link;?>" target="_blank">View</a></td>
-                        <td>
-                          <button class="btn btn-sm btn-success" onclick="updateMaterial('<?php echo $material->code;?>')">Update</button>
-                          <a href="materials.php?action=delete_material&code=<?php echo $material->code;?>" class="btn btn-sm btn-danger">Delete</a>
-                        </td>
+                        <th colspan="8" class="text-muted text-center">No materials yet</th>
                       </tr>
                       <?php
                     }
@@ -245,7 +259,7 @@ require './includes/functions.php';
           </button>
         </div>
         <div class="modal-body">
-          <form action="" method="post" enctype="multipart/form-data">
+          <form action="./materials.php" method="post" enctype="multipart/form-data">
             <div class="form-row">
               <div class="col-lg-6">
                 <label for="">Material</label>
@@ -269,11 +283,10 @@ require './includes/functions.php';
               </div>
               <div class="col-12">
                 <label for="">Category</label>
-                <select name="category" class="form-control mb-2" id="exampleFormControlSelect1">
-                  <option value="Any" selected>Any</option>
-                  <option value="Book">Books</option>
-                  <option value="Notes">Notes</option>
-                  <option value="Story">Story</option>
+                <select name="category" class="form-control mb-2" id="exampleFormControlSelect1" required="">
+                  <option value="A1 German">A1 German</option>
+                  <option value="A2 German">A2 German</option>
+                  <option value="B1 German">B1 German</option>
                 </select>
               </div>
               <div class="col-12">

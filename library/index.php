@@ -1,5 +1,7 @@
 <?php
 require '../includes/config.php';
+require '../includes/db_connect.php';
+require '../includes/library_processes.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,6 +9,8 @@ require '../includes/config.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Babbel Language Center | Library</title>
+  <meta name="description" content="Free material library you can find resources in A1 German, A2 German and B1 German ,signup with us to get access to extra materials and videos.">
+  <meta name="keywords" content="library,materials,books,stories,notes,,Babbel,Language,Center,German,language,lesssons,learn,read,write,speak,Harare,Zimbabwe">
   <!-- Libraries -->
   <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../lib/font-awesome/css/all.min.css">
@@ -15,14 +19,45 @@ require '../includes/config.php';
   <link rel="stylesheet" href="../css/library.css">
   <!-- Favicons -->
   <?php DISPLAY_ICONS();?>
+
+  <!-- Indexing Details -->
+  <link href="https://blc.co.zw/library/" rel="canonical" />
+  <!-- Required Open Graph data -->
+  <meta property="og:title" content="Babbel Language Center - Language School" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="<?=ROOT;?>/img/logo/logo-text.png" />
+  <meta property="og:url" content="<?=ROOT;?>" />
+  <!-- Optional Open Graph data -->
+  <!--<meta property="og:audio" content="https://example.com/guide.mp3." />-->
+  <meta property="og:description" content="Free material library you can find resources in A1 German, A2 German and B1 German ,signup with us to get access to extra materials and videos." />
+  <meta property="og:site_name" content="Babbel Language Center" />
+  <meta property="og:locale" content="en_us" />
+  <!--<meta property="og:video" content="https://example.com/guide.mp4" />-->
+  <!-- Find additional markup on https://ogp.me -->
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@babbellanguagecenter">
+  <meta name="twitter:domain" content="<?=ROOT;?>">
+  <meta name="twitter:title" content="Babbel Language Center | Library">
+  <meta name="twitter:description" content="Free material library you can find resources in A1 German, A2 German and B1 German ,signup with us to get access to extra materials and videos.">
+  <meta name="twitter:image" content="<?=ROOT;?>/img/logo/logo-text.png">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <!-- End Of Indexing Details -->
+  
 </head>
 <body>
 
+  <!-- Preloader -->
+  <?php
+  require '../includes/preloader.php';
+  ?>
+
+  <!-- Header -->
   <header class="header">
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
       <div class="container">
         <a class="navbar-brand" href="<?=ROOT;?>">
-          <img src="<?=ROOT;?>/img/logo/logo-text.png" width="120" alt="" loading="lazy">
+          <img src="<?=ROOT;?>/img/logo/logo-text.png" width="120" alt="Babbel Language Center logo" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -44,7 +79,10 @@ require '../includes/config.php';
                 Library <span class="sr-only">(current)</span>
               </a>
               <div class="dropdown-menu" aria-labelledby="libraryDropdown">
-                <a class="dropdown-item" href="<?=ROOT;?>/library/">Materials</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/">All Materials</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/A1-German.php">A1 German</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/A2-German.php">A2 German</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/B1-German.php">B1 German</a>
               </div>
             </li>
             <li class="nav-item">
@@ -81,45 +119,64 @@ require '../includes/config.php';
   <section class="library">
     <div class="library-filters">
       <div class="container">
-        <div class="row justify-content-between">
+        <div class="row align-items-center justify-content-between">
+          <?php
+
+          if (isset($_GET['q'])) {
+            // Get Searched Materials
+            $materials = searchMaterials($conn, $_GET['q']);
+          } else {
+            // Get the materials
+            $materials = getAllMaterials($conn);
+          }
+
+
+
+          ?>
+          <div class="col-lg-3">
+            <div class="results-container">
+              <p class="text-muted text-center mb-0">
+                <?php
+                if (isset($_GET['q'])) {
+                  echo 'Search for "' . $_GET['q']  . '" ';
+                }
+                if ($materials !== false) {
+                  echo count($materials);
+                } else {
+                  echo 0;
+                }
+              ?> results</p>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="filter-container">
+              <select class="form-control form-control-sm" name="filter-category">
+                <option disabled selected>Category</option>
+                <option value="A1 German">A1 German</option>
+                <option value="A2 German">A2 German</option>
+                <option value="B1 German">B1 German</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="filter-container">
+              <select class="form-control form-control-sm" name="filter-by">
+                <option disabled selected>Filter By</option>
+                <option value="recent">Recent</option>
+                <option value="title">Title</option>
+              </select>
+            </div>
+          </div>
           <div class="col-lg-3">
             <div class="filter-container filter-search">
-              <div class="input-group">
-                <input type="search" class="form-control form-control-sm" placeholder="Search...">
-                <div class="input-group-append">
-                  <button type="submit" class="search-btn btn btn-sm"><i class="fa fa-search"></i></button>
+              <form action="./">
+                <div class="input-group">
+                  <input type="search" name="q" value="<?php if(isset($_GET['q'])) echo $_GET['q'];?>" class="form-control form-control-sm" placeholder="Search...">
+                  <div class="input-group-append">
+                    <button type="submit" class="search-btn btn btn-sm"><i class="fa fa-search"></i></button>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="filter-container">
-              <select class="form-control form-control-sm">
-                <option selected>Type</option>
-                <option value="Books">Books</option>
-                <option value="Notes">Notes</option>
-                <option value="Story">Story</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="filter-container">
-              <select class="form-control form-control-sm">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="filter-container">
-              <select class="form-control form-control-sm">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
+              </form>
             </div>
           </div>
         </div>
@@ -128,99 +185,44 @@ require '../includes/config.php';
     <div class="library-books">
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 col-md-3 col-lg-2">
-            <div class="material-container">
-              <img src="../img/material.jpg" width="100%" alt="" class="img-fluid material-img">
-              <a href="#" class="material-name">That That</a>
-              <span class="material-author">Tha that that</span>
+          <?php
+
+          if ($materials !== false) {
+            foreach ($materials as $material) {
+              $material = (object) $material;
+              ?>
+              <div class="col-sm-6 col-md-3 col-lg-2">
+                <div class="material-container">
+                  <img src="<?=ROOT;?>/uploads/captions/<?=$material->preview;?>" width="100%" alt="" class="img-fluid material-img">
+                  <a href="<?=ROOT;?>/uploads/materials/<?=$material->link;?>" class="material-name"><?=$material->title;?></a>
+                  <span class="material-author"><?=$material->author;?></span>
+                </div>
+              </div>
+
+              <?php
+            }
+          } else {
+            ?>
+            <div class="col">
+              <p class="text-muted text-center">Nothing found!!!</p>
             </div>
-          </div>
+            <?php
+          }
+          ?>
 
         </div>
       </div>
     </div>
   </section>
   
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-3">
-          <div class="footer-about">
-            <img src="../img/logo.png" alt="" class="img-fluid">
-            <p class="small">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo itaque maxime temporibus, quisquam voluptas praesentium corporis quaerat eveniet impedit reiciendis.</p>
-            <div class="footer-social">
-              <ul class="nav justify-content-center">
-                <li>
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                </li>                         
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="footer-links">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">About</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Services</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Pricing</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Library</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Events</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="footer-contact">
-            <h4>Contact Us</h4>
-            <ul class="nav flex-column">
-              <li><i class="fa fa-envelope"></i><a href="#">info@blc.co.zw</a></li>
-              <li><i class="fa fa-phone"></i><a href="#">+263 87 934 43483</a></li>
-              <li><i class="fa fa-map-marked"></i><a href="#">13F Fraser St, Parktown</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="footer-subscribe">
-            <h4>Sign Up For Updates</h4>
-            <form action="">
-              <input type="email" name="email" id="" class="form-control" placeholder="Email*">
-              <button type="submit" class="blc-btn btn">Subscribe</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="footer-copyright text-center">
-            <span>&copy; All Right Preserved</span> | <span>by <a href="#">Mufaro D Kaseke</a></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer -->
+  <?php
+  require_once '../includes/footer.php';
+  ?>
+  <!-- End Of Footer -->
   <script src="../lib/jquery/jquery-3.6.0.min.js"></script>
   <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../js/library.js"></script>
 </body>
 </html>

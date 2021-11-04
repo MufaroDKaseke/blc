@@ -1,4 +1,3 @@
-/* Dashboard Stylesheet */
 /* Fonts */
 @font-face {
   font-family: "OpenSans";
@@ -181,7 +180,23 @@ a:hover {
 }
 
 .navbar {
+  align-items: center;
   justify-content: space-between;
+}
+.navbar #toggleSidebar:focus, .navbar #toggleSidebar:focus-within {
+  box-shadow: none;
+}
+.navbar .navbar-toggler-icon {
+  width: 20px;
+  height: 20px;
+}
+.navbar .tools-nav {
+  font-size: 0.9rem;
+}
+@media screen and (max-width: 576px) {
+  .navbar .tools-nav {
+    font-size: 0.8rem;
+  }
 }
 .navbar .tools-nav .nav-link {
   color: #000;
@@ -194,6 +209,14 @@ a:hover {
 .navbar .tools-nav .nav-link .badge {
   font-size: 60%;
   position: absolute;
+}
+.navbar .user-nav {
+  font-size: 0.9rem;
+}
+@media screen and (max-width: 576px) {
+  .navbar .user-nav {
+    font-size: 0.8rem;
+  }
 }
 .navbar .user-nav .dropdown-toggle {
   color: #000;
@@ -210,6 +233,11 @@ a:hover {
 }
 .notification-panel .notification .alert {
   font-size: 0.9rem;
+}
+@media screen and (max-width: 768px) {
+  .notification-panel .notification .alert {
+    font-size: 0.8rem;
+  }
 }
 
 /* Login Page */
@@ -274,6 +302,7 @@ Page Content
   transition: all 1s ease;
 }
 .dash-videos .dash-video .video-title {
+  margin-bottom: 0.5rem;
   font-family: "OpenSans-Bold", Arial, sans-serif;
 }
 
@@ -302,12 +331,25 @@ Page Content
 }
 .dash-materials .material-name {
   color: #00FF00;
-  font-size: 600;
+  font-size: 0.85rem;
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-family: "OpenSans-Bold", Arial, sans-serif;
 }
+@media screen and (max-width: 768px) {
+  .dash-materials .material-name {
+    font-size: 1rem;
+  }
+}
 .dash-materials .material-author {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+}
+@media screen and (max-width: 768px) {
+  .dash-materials .material-author {
+    font-size: 0.9rem;
+  }
 }
 
 /* Events */
@@ -343,6 +385,7 @@ Page Content
   border-radius: 5px;
 }
 .dash-events .event-container .event-date .month {
+  text-transform: uppercase;
   font-size: 0.9rem;
   font-family: "OpenSans-Light", Arial, sans-serif;
 }
@@ -353,7 +396,54 @@ Page Content
 .dash-events .event-container .event-name {
   color: #052505;
   text-transform: capitalize;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.25rem;
   font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+/* Profile */
+.dash-profile form label {
+  font-size: 14px;
+}
+
+/* Dashboard Welcome */
+.dash-welcome .dash-welcome-msg {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: #f2f2f2;
+}
+.dash-welcome .dash-welcome-msg i {
+  color: #00FF00;
+  margin-bottom: 1rem;
+}
+.dash-welcome .dash-welcome-msg h4 {
+  color: #052505;
+  font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+.dash-welcome .dash-welcome-info {
+  padding: 1rem;
+  background: #f2f2f2;
+}
+@media screen and (max-width: 768px) {
+  .dash-welcome .dash-welcome-info {
+    margin-bottom: 1rem;
+  }
+}
+.dash-welcome .dash-welcome-info h3 {
+  color: #052505;
+  font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+.dash-welcome .dash-welcome-info p {
+  font-size: 1.2rem;
+  font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+.dash-welcome .dash-welcome-info a {
+  color: #004000;
+  font-size: 0.85rem;
+}
+.dash-welcome .dash-welcome-info a:hover {
+  color: #00FF00;
+  transition: all 0.5s ease;
 }
 
 /*# sourceMappingURL=dashboard.css.map */

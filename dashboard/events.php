@@ -1,5 +1,8 @@
 <?php
 require '../includes/config.php';
+require './includes/user_session.php';
+require '../includes/db_connect.php';
+require './includes/functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +15,8 @@ require '../includes/config.php';
   <link rel="stylesheet" href="<?php echo ROOT?>/lib/font-awesome/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="<?php echo ROOT?>/dashboard/css/dashboard.css">
+  <!-- Favicons -->
+  <?php DISPLAY_ICONS();?>
 </head>
 <body>
 
@@ -32,9 +37,12 @@ require '../includes/config.php';
       <!-- End Of Header -->
 
       <!-- Notification Panel -->
-      <?php
-      require './includes/notification-panel.php';
-      ?>
+      <section class="notification-panel">
+        <div class="container-fluid">
+          <div class="row">
+          </div>
+        </div>
+      </section>
       <!--End Of Notification Panel -->
 
       <section class="main-content">
@@ -45,7 +53,7 @@ require '../includes/config.php';
               <!-- Dash Panel -->
               <div class="dash-panel dash-events">
                 <div class="dash-panel-header d-flex justify-content-between">
-                  <h4>Materials</h4>
+                  <h4>Events</h4>
                   <div class="dash-panel-action">
                     <!-- Button trigger modal -->
                     
@@ -54,102 +62,41 @@ require '../includes/config.php';
                 <div class="dash-panel-content">
                   <div class="row">
 
-                    <div class="col-md-6 col-lg-3">
-                      <div class="event-container">
-                        <div class="card">
-                          <img src="<?php echo ROOT;?>/img/hero.jpg" alt="" class="event-img card-img-top">
-                          <div class="event-date">
-                            <span class="month">OCT</span>
-                            <span class="day">23</span>
-                          </div>
-                          <div class="card-body">
-                            <a href="#" class="event-name h4 card-title">The best of events</a>
-                            <p class="event-desc small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, molestiae.</p>
+                    <?php
+
+                    $events = getAllEvents($conn);
+
+                    if($events !== false) {
+                      foreach ($events as $event) {
+                        $event = (object) $event;
+                        ?>
+                        <div class="col-md-6 col-lg-3">
+                          <div class="event-container">
+                            <div class="card">
+                              <img src="<?=ROOT;?>/uploads/captions/<?=$event->caption;?>" alt="" class="event-img card-img-top">
+                              <div class="event-date">
+                                <span class="month"><?=getMonth($event->date);?></span>
+                                <span class="day"><?=getDay($event->date);?></span>
+                              </div>
+                              <div class="card-body">
+                                <a href="<?=$event->link;?>" class="event-name text-truncate h4 card-title"><?=$event->title;?></a>
+                                <p class="event-desc small"><?=$event->description;?></p>
+                              </div>
+                            </div>
                           </div>
                         </div>
+                        <?php    
+                      }
+                    } else {
+                      ?>
+                      <div class="col">
+                        <p class="text-muted text-center">No Events Yet</p>
                       </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-3">
-                      <div class="event-container">
-                        <div class="card">
-                          <img src="<?php echo ROOT;?>/img/hero.jpg" alt="" class="event-img card-img-top">
-                          <div class="event-date">
-                            <span class="month">OCT</span>
-                            <span class="day">23</span>
-                          </div>
-                          <div class="card-body">
-                            <a href="#" class="event-name h4 card-title">The best of events</a>
-                            <p class="event-desc small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, molestiae.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-3">
-                      <div class="event-container">
-                        <div class="card">
-                          <img src="<?php echo ROOT;?>/img/hero.jpg" alt="" class="event-img card-img-top">
-                          <div class="event-date">
-                            <span class="month">OCT</span>
-                            <span class="day">23</span>
-                          </div>
-                          <div class="card-body">
-                            <a href="#" class="event-name h4 card-title">The best of events</a>
-                            <p class="event-desc small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, molestiae.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-3">
-                      <div class="event-container">
-                        <div class="card">
-                          <img src="<?php echo ROOT;?>/img/hero.jpg" alt="" class="event-img card-img-top">
-                          <div class="event-date">
-                            <span class="month">OCT</span>
-                            <span class="day">23</span>
-                          </div>
-                          <div class="card-body">
-                            <a href="#" class="event-name h4 card-title">The best of events</a>
-                            <p class="event-desc small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, molestiae.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                      <?php
+                    }
+                    ?>
 
 
-                    <div class="col-md-6 col-lg-3">
-                      <div class="event-container">
-                        <div class="card">
-                          <img src="<?php echo ROOT;?>/img/hero.jpg" alt="" class="event-img card-img-top">
-                          <div class="event-date">
-                            <span class="month">OCT</span>
-                            <span class="day">23</span>
-                          </div>
-                          <div class="card-body">
-                            <a href="#" class="event-name h4 card-title">The best of events</a>
-                            <p class="event-desc small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, molestiae.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-3">
-                      <div class="event-container">
-                        <div class="card">
-                          <img src="<?php echo ROOT;?>/img/hero.jpg" alt="" class="event-img card-img-top">
-                          <div class="event-date">
-                            <span class="month">OCT</span>
-                            <span class="day">23</span>
-                          </div>
-                          <div class="card-body">
-                            <a href="#" class="event-name h4 card-title">The best of events</a>
-                            <p class="event-desc small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, molestiae.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -160,39 +107,6 @@ require '../includes/config.php';
       </section>       
     </div>
     <!-- End Of Page Content -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Upload Material</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action="">
-              <label for="preview_img">Preview Image</label>
-              <input type="text" name="name" id="" class="form-control form-control-sm" placeholder="Name Of Material">
-              <label for="preview_img">Preview Image</label>
-              <input type="text" name="author" id="" class="form-control form-control-sm" placeholder="Author">
-              <label for="preview_img">Preview Image</label>
-              <input type="date" name="" id="" class="form-control form-control-sm" placeholder="Date Of Publication">
-              <label for="preview_img">Preview Image</label>
-              <input type="file" name="" id="" class="form-control-file" placeholder="Preview Image">
-              <label for="preview_img">Material File</label>
-              <input type="file" name="" id="" class="form-control-file" placeholder="Material File">
-
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </main>
 

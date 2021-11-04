@@ -1,4 +1,4 @@
-/* Dashboard Stylesheet */
+
 
 @import './variables';
 @import './mixins';
@@ -156,9 +156,28 @@
 }
 
 .navbar {
+  align-items: center;
   justify-content: space-between;
 
+  #toggleSidebar {
+    &:focus,
+    &:focus-within {
+      box-shadow: none;
+    }
+  }
+
+  #{&}-toggler-icon {
+    width: 20px;
+    height: 20px;
+  }
+
   .tools-nav {
+    font-size: .9rem;
+
+    @media screen and (max-width: $breakpoint-sm) {
+      font-size: .8rem;
+    }
+    
     .nav-link {
       color: $black;
       position: relative;
@@ -177,6 +196,12 @@
   }
 
   .user-nav {
+    font-size: .9rem;
+
+    @media screen and (max-width: $breakpoint-sm) {
+      font-size: .8rem;
+    }
+
     .dropdown-toggle {
       color: $black;
     }
@@ -198,6 +223,10 @@
   .notification {
     .alert {
       font-size: .9rem;
+
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: .8rem;
+      }
     }
   }
 }
@@ -290,6 +319,7 @@ Page Content
     }
 
     .video-title {
+      margin-bottom: .5rem;
       @include font("OpenSans-Bold");
     }
   }
@@ -325,14 +355,24 @@ Page Content
 
   .material-name {
     color: $primary;
-    //font-size: 1.25rem;
-    font-size: 600;
+    font-size: .85rem;
     display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     @include font("OpenSans-Bold");
+
+    @media screen and (max-width: $breakpoint-md) {
+      font-size: 1rem;
+    }
   }
 
   .material-author {
-    font-size: .8rem;
+    font-size: .7rem;
+
+    @media screen and (max-width: $breakpoint-md) {
+      font-size: .9rem;
+    }
   }
 }
 
@@ -378,6 +418,7 @@ Page Content
 
 
       .month {
+        text-transform: uppercase;
         font-size: .9rem;
         @include font("OpenSans-Light");
       }
@@ -391,11 +432,78 @@ Page Content
     .event-name {
       color: $color-4;
       text-transform: capitalize;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: .25rem;
       @include font("OpenSans-Bold");
     }
 
     .event-desc {
 
+    }
+  }
+}
+
+/* Profile */
+
+.dash-profile {
+
+  form {
+    label {
+      font-size: 14px;
+    }
+  }
+}
+
+/* Dashboard Welcome */
+
+.dash-welcome {
+  #{&}-msg {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background: darken($white, 5%);
+
+    i {
+      color: $color-7;
+      margin-bottom: 1rem;
+    }
+
+    h4 {
+      color: $color-4;
+      @include font("OpenSans-Bold");
+    }
+
+    p {
+
+    }
+  }
+
+  #{&}-info {
+    padding: 1rem;
+    background: darken($white, 5%);
+
+    @media screen and (max-width: $breakpoint-md) {
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      color: $color-4;
+      @include font("OpenSans-Bold");
+    }
+
+    p {
+      font-size: 1.2rem;
+      @include font("OpenSans-Bold");
+    }
+
+    a {
+      color: $color-5;
+      font-size: .85rem;
+
+      &:hover {
+        color: $primary;
+        transition: all .5s ease;
+      }
     }
   }
 }

@@ -181,7 +181,23 @@ a:hover {
 }
 
 .navbar {
+  align-items: center;
   justify-content: space-between;
+}
+.navbar #toggleSidebar:focus, .navbar #toggleSidebar:focus-within {
+  box-shadow: none;
+}
+.navbar .navbar-toggler-icon {
+  width: 20px;
+  height: 20px;
+}
+.navbar .tools-nav {
+  font-size: 0.9rem;
+}
+@media screen and (max-width: 576px) {
+  .navbar .tools-nav {
+    font-size: 0.8rem;
+  }
 }
 .navbar .tools-nav .nav-link {
   color: #000;
@@ -194,6 +210,14 @@ a:hover {
 .navbar .tools-nav .nav-link .badge {
   font-size: 60%;
   position: absolute;
+}
+.navbar .user-nav {
+  font-size: 0.9rem;
+}
+@media screen and (max-width: 576px) {
+  .navbar .user-nav {
+    font-size: 0.8rem;
+  }
 }
 .navbar .user-nav .dropdown-toggle {
   color: #000;
@@ -210,6 +234,11 @@ a:hover {
 }
 .notification-panel .notification .alert {
   font-size: 0.9rem;
+}
+@media screen and (max-width: 768px) {
+  .notification-panel .notification .alert {
+    font-size: 0.8rem;
+  }
 }
 
 /* Login Page */
@@ -252,6 +281,51 @@ Page Content
 }
 .dash-panel table {
   font-size: 0.9rem;
+}
+
+/* Dashboard Welcome */
+.dash-welcome .dash-welcome-msg {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: #f2f2f2;
+}
+.dash-welcome .dash-welcome-msg i {
+  color: #00FF00;
+  margin-bottom: 1rem;
+}
+.dash-welcome .dash-welcome-msg h4 {
+  color: #052505;
+  font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+.dash-welcome .dash-welcome-info {
+  padding: 1rem;
+  background: #f2f2f2;
+}
+@media screen and (max-width: 768px) {
+  .dash-welcome .dash-welcome-info {
+    margin-bottom: 1rem;
+  }
+}
+.dash-welcome .dash-welcome-info h3 {
+  color: #052505;
+  font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+.dash-welcome .dash-welcome-info p {
+  font-size: 1.2rem;
+  font-family: "OpenSans-Bold", Arial, sans-serif;
+}
+.dash-welcome .dash-welcome-info a {
+  color: #004000;
+  font-size: 0.85rem;
+}
+.dash-welcome .dash-welcome-info a:hover {
+  color: #00FF00;
+  transition: all 0.5s ease;
+}
+
+/* Profile */
+.dash-profile form label {
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=admin.css.map */

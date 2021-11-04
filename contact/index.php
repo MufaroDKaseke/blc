@@ -7,6 +7,8 @@ require '../includes/config.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Babbel Language Center | Contact</title>
+  <meta name="description" content="Contact Us. 3 Orkney Road, Eastlea, Harare. info@blc.co.zw . +263 78 536 9204. 8am - 8:30pm">
+  <meta name="keywords" content="contact,details,Babbel,Language,Center,German,language,lesssons,learn,read,write,speak,Harare,Zimbabwe">
   <!-- Libraries -->
   <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../lib/font-awesome/css/all.min.css">
@@ -15,14 +17,46 @@ require '../includes/config.php';
   <link rel="stylesheet" href="../css/contact.css">
   <!-- Favicons -->
   <?php DISPLAY_ICONS();?>
+
+  <!-- Indexing Details -->
+  <link href="https://blc.co.zw/contact/" rel="canonical" />
+  <!-- Required Open Graph data -->
+  <meta property="og:title" content="Babbel Language Center - Language School" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="<?=ROOT;?>/img/logo/logo-text.png" />
+  <meta property="og:url" content="<?=ROOT;?>" />
+  <!-- Optional Open Graph data -->
+  <!--<meta property="og:audio" content="https://example.com/guide.mp3." />-->
+  <meta property="og:description" content="Contact Us. 3 Orkney Road, Eastlea, Harare. info@blc.co.zw . +263 78 536 9204. 8am - 8:30pm" />
+  <meta property="og:site_name" content="Babbel Language Center" />
+  <meta property="og:locale" content="en_us" />
+  <!--<meta property="og:video" content="https://example.com/guide.mp4" />-->
+  <!-- Find additional markup on https://ogp.me -->
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@babbellanguagecenter">
+  <meta name="twitter:domain" content="<?=ROOT;?>">
+  <meta name="twitter:title" content="Babbel Language Center | Contact">
+  <meta name="twitter:description" content="Contact Us. 3 Orkney Road, Eastlea, Harare. info@blc.co.zw . +263 78 536 9204. 8am - 8:30pm">
+  <meta name="twitter:image" content="<?=ROOT;?>/img/logo/logo-text.png">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <!-- End Of Indexing Details -->
+
+
 </head>
 <body>
+
+  <!-- Preloader -->
+  <?php
+  require '../includes/preloader.php';
+  ?>
   
+  <!-- Header -->
   <header class="header">
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">
-          <img src="<?=ROOT;?>/img/logo/logo-text.png" width="120" alt="" loading="lazy">
+        <a class="navbar-brand" href="<?=ROOT;?>">
+          <img src="<?=ROOT;?>/img/logo/logo-text.png" width="120" alt="Babbel Language Center logo" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -44,7 +78,10 @@ require '../includes/config.php';
                 Library
               </a>
               <div class="dropdown-menu" aria-labelledby="libraryDropdown">
-                <a class="dropdown-item" href="<?=ROOT;?>/library/">Materials</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/">All Materials</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/A1-German.php">A1 German</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/A2-German.php">A2 German</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/B1-German.php">B1 German</a>
               </div>
             </li>
             <li class="nav-item">
@@ -87,11 +124,11 @@ require '../includes/config.php';
             <ul class="list-unstyled">
               <li>
                 <h5><i class="fa fa-map-marker-alt"></i>Address</h5>
-                <p>13F Fraser St, Parktown</p>
+                <p>3 Orkney Road, Eastlea<br>Harare</p>
               </li>
               <li>
                 <h5><i class="fa fa-phone"></i>Phone</h5>
-                <p>+263 780 948 498</p>
+                <p>+263 78 536 9204</p>
               </li>
               <li>
                 <h5><i class="fa fa-envelope"></i>Support</h5>
@@ -117,91 +154,19 @@ require '../includes/config.php';
         </div>
         <div class="col-lg-6">
           <div class="contact-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3796.412179118472!2d30.97336181452269!3d-17.91291928776563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a1c1f29ea957%3A0x3e3b8b8de0f38d7d!2sOmorfo%20Tech%20Labs!5e0!3m2!1sen!2szw!4v1625899559312!5m2!1sen!2szw" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.4151381125885!2d31.071823214846567!3d-17.819163780743875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a5c350a4beef%3A0xbaf84f849fbee7b0!2sBabbel%20Language%20Center!5e0!3m2!1sen!2szw!4v1630519651640!5m2!1sen!2szw" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           </div>
         </div>
       </div>
     </div>
   </section>
   
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-3">
-          <div class="footer-about">
-            <img src="../img/logo.png" alt="" class="img-fluid">
-            <p class="small">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo itaque maxime temporibus, quisquam voluptas praesentium corporis quaerat eveniet impedit reiciendis.</p>
-            <div class="footer-social">
-              <ul class="nav justify-content-center">
-                <li>
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                </li>                         
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="footer-links">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">About</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Services</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Pricing</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Library</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Events</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="footer-contact">
-            <h4>Contact Us</h4>
-            <ul class="nav flex-column">
-              <li><i class="fa fa-envelope"></i><a href="#">info@blc.co.zw</a></li>
-              <li><i class="fa fa-phone"></i><a href="#">+263 87 934 43483</a></li>
-              <li><i class="fa fa-map-marked"></i><a href="#">13F Fraser St, Parktown</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="footer-subscribe">
-            <h4>Sign Up For Updates</h4>
-            <form action="">
-              <input type="email" name="email" id="" class="form-control" placeholder="Email*">
-              <button type="submit" class="blc-btn btn">Subscribe</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="footer-copyright text-center">
-            <span>&copy; All Right Preserved</span> | <span>by <a href="#">Mufaro D Kaseke</a></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer -->
+  <?php
+  require_once '../includes/footer.php';
+  ?>
+  <!-- End Of Footer -->
+
   <script src="../lib/jquery/jquery-3.6.0.min.js"></script>
   <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../js/main.js"></script>
@@ -221,7 +186,7 @@ require '../includes/config.php';
         data: contactForm.serialize(),
         beforeSend: function() {
           submitBtn.attr('disabled', true);
-          submitBtn.html('Sending');
+          submitBtn.html('Sending...');
         },
         success: function(data) {
           resultContainer.html(data);

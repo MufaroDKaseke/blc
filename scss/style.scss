@@ -3,7 +3,6 @@
 @import './variables';
 @import './mixins';
 
-
 /* Fonts */
 @font-face {
   font-family: "OpenSans";
@@ -41,7 +40,7 @@
 
 /* Hero */
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url('../img/hero-4 (4).jpg');
+  background: linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url('../img/hero-bg.jpg');
   background-size: cover;
   background-position: center;
 
@@ -69,7 +68,7 @@
     background: $primary;
     color: $white;
     font-weight: 600;
-		font-size: .9rem;
+    font-size: .9rem;
     padding: .5rem 1rem;
 
     &:hover {
@@ -126,37 +125,38 @@
 }
 
 .about {
-  background: url('../img/hero.jpg');
+  background: url('../img/hero-3.jpg');
   background-size: cover;
   background-position: center;
 
   #{&}-container {
-    background: #000000c7;
+    background: rgba(0, 0, 0, .8);
     padding: 4rem;
+    box-shadow: 0 0 5px #000;
 
-		@media screen and (max-width: $breakpoint-sm) {
-			padding: 3rem 15px 3rem 15px;
-		}
+    @media screen and (max-width: $breakpoint-sm) {
+     padding: 3rem 15px 3rem 15px;
+   }
+ }
+
+ #{&}-title {
+  color: $white;
+  @include font("OpenSans-Bold");
+
+  span {
+    color: $primary;
   }
+}
 
-  #{&}-title {
-    color: $white;
-    @include font("OpenSans-Bold");
+#{&}-title-p {
+  color: $white;
+  margin-bottom: 1.5rem;
+  @include font("OpenSans-Light");
+}
 
-    span {
-      color: $primary;
-    }
-  }
-
-  #{&}-title-p {
-    color: $white;
-    margin-bottom: 1.5rem;
-    @include font("OpenSans-Light");
-  }
-
-  #{&}-p {
-    color: darken($white, 5%);
-  }
+#{&}-p {
+  color: darken($white, 5%);
+}
 
 }
 
@@ -203,8 +203,10 @@
   .material-name {
     color: $primary;
     //font-size: 1.25rem;
-    font-size: 600;
     display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     @include font("OpenSans-Bold");
   }
 
@@ -214,7 +216,7 @@
 }
 
 .counters {
-  background: linear-gradient(rgba(0, 25, 0, .7), rgba(0, 25, 0, .7)), url('../img/hero.jpg');
+  background: linear-gradient(rgba(0, 25, 0, .9), rgba(0, 25, 0, .9)), url('../img/counter.jpg');
   background-size: cover;
   background-position: center;
   padding-top: 1.5rem;
@@ -224,6 +226,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media screen and (max-width: $breakpoint-md) {
+      margin-bottom: 1.25rem;
+    }
   }
 
   .counter-number {
@@ -252,7 +258,7 @@
   padding-bottom: 3rem;
 
   .callout-container {
-    background: url('../img/hero.jpg');
+    background: url('../img/callout.jpg');
     background-size: cover;
     background-position: center;
   }
@@ -287,6 +293,8 @@
   }
 }
 
+/* Events */
+
 .events {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -297,7 +305,7 @@
     color: $color-4;
     @include font("OpenSans-Bold");
 
-     &:after {
+    &:after {
       @include afterSectionTitle();
     }
   }
@@ -341,6 +349,7 @@
 
 
       .month {
+        text-transform: uppercase;
         font-size: .9rem;
         @include font("OpenSans-Light");
       }
@@ -354,6 +363,9 @@
     .event-name {
       color: $color-4;
       text-transform: capitalize;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: .25rem;
       @include font("OpenSans-Bold");
     }
 
@@ -362,6 +374,9 @@
     }
   }
 }
+
+
+/* Pricing */
 
 .package {
   padding-top: 3rem;

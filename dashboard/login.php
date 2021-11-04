@@ -14,6 +14,8 @@ require './includes/login_process.php';
   <link rel="stylesheet" href="<?php echo ROOT?>/lib/font-awesome/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="<?php echo ROOT?>/admin/css/admin.css">
+  <!-- Favicons -->
+  <?php DISPLAY_ICONS();?>
 </head>
 <body>
 
@@ -29,6 +31,10 @@ require './includes/login_process.php';
               if ($_GET['result'] === 'not_logged_in') {
                 ?>
                 <p class="login-result"><span class="text-danger"><i class="fa fa-exclamation-triangle"></i> Not Logged In</span></p>
+                <?php
+              } else if ($_GET['result'] === 'login_failed') {
+                ?>
+                <p class="login-result"><span class="text-danger"><i class="fa fa-exclamation-triangle"></i> Incorrect username or password</span></p>
                 <?php
               }
             }

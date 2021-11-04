@@ -9,4 +9,6 @@ function DISPLAY_ICONS(){
   <link href="<?php echo ROOT;?>/img/logo/icon.png" rel="apple-touch-icon">
   <?php
 }
+
+
 ?>

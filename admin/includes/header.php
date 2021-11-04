@@ -8,10 +8,10 @@
       </li>
       <!--<li class="nav-item">
         <a href="<?php echo ROOT;?>/admin/notifications.php" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-pill badge-success">6</span></a>
-      </li>
-      <li class="nav-item">
-        <a href="<?php echo ROOT;?>/admin/messages.php" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-pill badge-success">20+</span></a>
       </li>-->
+      <li class="nav-item">
+        <a href="<?php echo ROOT;?>/webmail" target="_blank" class="nav-link"><i class="fa fa-envelope"></i><!--<span class="badge badge-pill badge-success">20+</span>--></a>
+      </li>
     </ul>
   </div>
   <div class="user-nav">

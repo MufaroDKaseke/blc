@@ -23,9 +23,18 @@
       <div class="col-md-6 col-lg-3">
         <div class="footer-links">
           <h4>Useful Links</h4>
-          <ul class="nav flex-column">
+          <ul class="nav">
             <li class="nav-item">
               <a href="<?=ROOT;?>/home" class="nav-link"><i class="fa fa-angle-right"></i>Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="<?=ROOT;?>/admin/login.php" class="nav-link"><i class="fa fa-angle-right"></i>Admin</a>
+            </li>
+            <li class="nav-item">
+              <a href="<?=ROOT;?>/register/" class="nav-link"><i class="fa fa-angle-right"></i>Register</a>
+            </li>
+            <li class="nav-item">
+              <a href="<?=ROOT;?>/privacy-policy.php" class="nav-link"><i class="fa fa-angle-right"></i>Privacy</a>
             </li>
             <li class="nav-item">
               <a href="<?=ROOT;?>/about/" class="nav-link"><i class="fa fa-angle-right"></i>About</a>
@@ -53,8 +62,8 @@
           <h4>Contact Us</h4>
           <ul class="nav flex-column">
             <li><i class="fa fa-envelope"></i><a href="mailto:info@blc.co.zw">info@blc.co.zw</a></li>
-            <li><i class="fa fa-phone"></i><a href="#">+263 87 934 43483</a></li>
-            <li><i class="fa fa-map-marked"></i><a href="#">13F Fraser St, Parktown</a></li>
+            <li><i class="fa fa-phone"></i><a href="tel:+263 78 536 9204">+263 78 536 9204</a></li>
+            <li><i class="fa fa-map-marked"></i><a href="#">3 Orkney Road, Eastlea</a></li>
           </ul>
         </div>
       </div>

@@ -10,14 +10,14 @@ function sendMessage($data) {
   //$mail->SMTPDebug = 4;                               // Enable verbose debug output
 
   $mail->isSMTP();                                      // Set mailer to use SMTP
-  $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+  $mail->Host = 'mail.blc.co.zw';  // Specify main and backup SMTP servers
   $mail->SMTPAuth = true;                               // Enable SMTP authentication
   $mail->Username = EMAIL;                 // SMTP username
   $mail->Password = PASSWORD;                           // SMTP password
-  $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-  $mail->Port = 587;                                    // TCP port to connect to
+  $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+  $mail->Port = 465;                                    // TCP port to connect to
 
-  $mail->setFrom('omorfotechlabs@gmail.com', 'Contact @blc.co.zw');
+  $mail->setFrom('admin@blc.co.zw', 'Contact Form @blc.co.zw');
   $mail->addAddress('info@blc.co.zw', 'Admin');     // Add a recipient
   //$mail->addReplyTo('info@omorfotechlabs.co.zw', 'Omorfo Tech Labs');
   //$mail->addCC('cc@example.com');
@@ -27,9 +27,9 @@ function sendMessage($data) {
   //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
   $mail->isHTML(true);                                  // Set email format to HTML
 
-  $mail->Subject = 'New message from omorfotechlabs.co.zw';
+  $mail->Subject = 'New message from blc.co.zw';
   $mail->Body    = '<b>' . $data['name'] . '</b><br />
-  <b>' . $data['phone_number'] . '</b></br>
+  <b>' . $data['phone_number'] . '</b><br />
   <b><a href="mailto:' . $data['email'] . '">' . $data['email'] . '</b><br /><br /><br />
   ' . nl2br($data['message']);
   //$mail->AltBody = 'This is a test for Omorfo Tech Labs contact form';

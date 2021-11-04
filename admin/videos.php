@@ -1,5 +1,6 @@
 <?php
 require '../includes/config.php';
+require './includes/user_session.php';
 require '../includes/db_connect.php';
 require './includes/functions.php';
 ?>
@@ -14,6 +15,8 @@ require './includes/functions.php';
   <link rel="stylesheet" href="<?php echo ROOT?>/lib/font-awesome/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="<?php echo ROOT?>/admin/css/admin.css">
+  <!-- Favicons -->
+  <?php DISPLAY_ICONS();?>
 </head>
 <body>
 
@@ -166,7 +169,7 @@ require './includes/functions.php';
                   <h4>Videos</h4>
                   <div class="dash-panel-action">
                     <!-- Button trigger modal -->
-                    <a href="" data-toggle="modal" data-target="#uploadVideoModal">Upload New</a>
+                    <a href="" data-toggle="modal" data-target="#uploadVideoModal"><i class="fa fa-upload"></i> Upload New</a>
                   </div>
                 </div>
                 <div class="dash-panel-content">

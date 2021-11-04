@@ -63,13 +63,23 @@
 
   .material-name {
     color: $primary;
-    //font-size: 1.25rem;
-    font-size: 600;
+    font-size: .8rem;
     display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     @include font("OpenSans-Bold");
+
+    @media screen and (max-width: $breakpoint-md) {
+      font-size: 1rem;
+    }
   }
 
   .material-author {
-    font-size: .8rem;
+    font-size: .7rem;
+
+    @media screen and (max-width: $breakpoint-md) {
+      font-size: .9rem;
+    }
   }
 }

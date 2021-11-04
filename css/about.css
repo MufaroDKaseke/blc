@@ -10,6 +10,10 @@
 .aboutus .aboutus-content .aboutus-title {
   font-family: "OpenSans-Bold", Arial, sans-serif;
 }
+.team {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
 .team .team-title {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -71,11 +75,15 @@
 .team .team-member .team-member-name {
   color: #052505;
   display: block;
+  font-size: 1.05rem;
   font-family: "OpenSans-Bold", Arial, sans-serif;
 }
 .team .team-member .team-member-name:hover {
   color: #00FF00;
   transition: all 0.5s ease;
+}
+.team .team-member .team-member-title {
+  font-size: 0.85rem;
 }
 
 /*# sourceMappingURL=about.css.map */

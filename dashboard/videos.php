@@ -1,5 +1,8 @@
 <?php
 require '../includes/config.php';
+require './includes/user_session.php';
+require '../includes/db_connect.php';
+require './includes/functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +15,8 @@ require '../includes/config.php';
   <link rel="stylesheet" href="<?php echo ROOT?>/lib/font-awesome/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="<?php echo ROOT?>/dashboard/css/dashboard.css">
+  <!-- Favicons -->
+  <?php DISPLAY_ICONS();?>
 </head>
 <body>
 
@@ -32,9 +37,12 @@ require '../includes/config.php';
       <!-- End Of Header -->
 
       <!-- Notification Panel -->
-      <?php
-      require './includes/notification-panel.php';
-      ?>
+      <section class="notification-panel">
+        <div class="container-fluid">
+          <div class="row">
+          </div>
+        </div>
+      </section>
       <!--End Of Notification Panel -->
 
       <section class="main-content">
@@ -53,7 +61,41 @@ require '../includes/config.php';
                 </div>
                 <div class="dash-panel-content">
                   <div class="row">
-                    <div class="col-sm-6 col-lg-3">
+                    <?php
+
+                    $videos = getAllVideos($conn);
+
+                    if ($videos !== false) {
+                      foreach ($videos as $video) {
+                        $video = (object) $video;
+                        ?>
+                        <div class="col-sm-6 col-lg-3">
+                          <div class="dash-video">
+                            <div class="card">
+                              <a class="video-caption" onclick="playVideo('<?=$video->code;?>')">
+                                <img src="<?=ROOT;?>/uploads/captions/<?=$video->caption;?>" class="card-img-top" alt="<?=$video->title;?>">
+                                <i class="fa fa-play-circle"></i>
+                              </a>
+                              <div class="card-body p-3">
+                                <h5 class="card-title video-title"><?=$video->title;?></h5>
+                                <p class="card-text video-date"><small class="text-muted">Uploaded <?=getMonth($video->entry_date);?> <?=getDay($video->entry_date);?></small></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <?php
+                      }
+                    } else {
+                      ?>
+                      <div class="col">
+                        <p class="text-muted text-center">No Videos Yet</p>
+                      </div>
+                      <?php
+                    }
+
+                    ?>
+
+                <!--<div class="col-sm-6 col-lg-3">
                       <div class="dash-video">
                         <div class="card">
                           <a class="video-caption" onclick="playVideo('6104abeebc675')">
@@ -66,78 +108,7 @@ require '../includes/config.php';
                           </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-3">
-                      <div class="dash-video">
-                        <div class="card">
-                          <a href="#" class="video-caption">
-                            <img src="../img/hero.jpg" class="card-img-top" alt="...">
-                            <i class="fa fa-play-circle"></i>
-                          </a>
-                          <div class="card-body">
-                            <h5 class="card-title video-title">The best video</h5>
-                            <p class="card-text video-date"><small class="text-muted">Last updated 3 mins ago</small></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                      <div class="dash-video">
-                        <div class="card">
-                          <a href="#" class="video-caption">
-                            <img src="../img/hero.jpg" class="card-img-top" alt="...">
-                            <i class="fa fa-play-circle"></i>
-                          </a>
-                          <div class="card-body">
-                            <h5 class="card-title video-title">The best video</h5>
-                            <p class="card-text video-date"><small class="text-muted">Last updated 3 mins ago</small></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                      <div class="dash-video">
-                        <div class="card">
-                          <a href="#" class="video-caption">
-                            <img src="../img/hero.jpg" class="card-img-top" alt="...">
-                            <i class="fa fa-play-circle"></i>
-                          </a>
-                          <div class="card-body">
-                            <h5 class="card-title video-title">The best video</h5>
-                            <p class="card-text video-date"><small class="text-muted">Last updated 3 mins ago</small></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                      <div class="dash-video">
-                        <div class="card">
-                          <a href="#" class="video-caption">
-                            <img src="../img/hero.jpg" class="card-img-top" alt="...">
-                            <i class="fa fa-play-circle"></i>
-                          </a>
-                          <div class="card-body">
-                            <h5 class="card-title video-title">The best video</h5>
-                            <p class="card-text video-date"><small class="text-muted">Last updated 3 mins ago</small></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                      <div class="dash-video">
-                        <div class="card">
-                          <a href="#" class="video-caption">
-                            <img src="../img/hero.jpg" class="card-img-top" alt="...">
-                            <i class="fa fa-play-circle"></i>
-                          </a>
-                          <div class="card-body">
-                            <h5 class="card-title video-title">The best video</h5>
-                            <p class="card-text video-date"><small class="text-muted">Last updated 3 mins ago</small></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    </div>-->
                   </div>
                 </div>
               </div>
@@ -164,11 +135,14 @@ require '../includes/config.php';
   <script src="<?php echo ROOT?>/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<?php echo ROOT?>/dashboard/js/dashboard.js"></script>
   <script>
-    
+
+    let videoPlayModal = $('#videoPlayModal');
+    let resultContainer = $('#videoPlayModal .modal-content');
+
+
+    // Play Video
     function playVideo(videoCode) {
 
-      videoPlayModal = $('#videoPlayModal');
-      resultContainer = $('#videoPlayModal .modal-content');
 
       $.ajax({
         url: './includes/play_video.php',
@@ -188,6 +162,11 @@ require '../includes/config.php';
         }
       });
     }
+
+    // Close Video On Modal Close
+    videoPlayModal.on('hidden.bs.modal', function (e) {
+      resultContainer.html('');
+    });
   </script>
 </body>
 </html>

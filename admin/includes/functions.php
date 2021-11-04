@@ -419,6 +419,76 @@ function getAllStudents($conn) {
   return false;
 }
 
+/*
 
+Users
+
+*/
+
+
+// Insert New User
+function insertNewUser($conn, $data) {
+  $stmt = mysqli_prepare($conn, "INSERT INTO users VALUES (NULL, ?, ?, ?, ?, CURRENT_TIMESTAMP)");
+  mysqli_stmt_bind_param($stmt, 'ssss', $data['user_id'], $data['name'], $data['username'], $data['password']);
+
+  if(mysqli_stmt_execute($stmt)) {
+    return true;
+  } else {
+    return false;
+  }
+  mysqli_stmt_close($stmt);
+}
+
+// Update User Details
+function updateUser($conn, $data) {
+  $stmt = mysqli_prepare($conn, "UPDATE users SET name=?, username=?, password=? WHERE user_id='" . $data['user_id'] ."'");
+  mysqli_stmt_bind_param($stmt, 'sss', $data['name'], $data['username'], $data['password']);
+
+  if(mysqli_stmt_execute($stmt)) {
+    return true;
+  } else {
+    return false;
+  }
+  mysqli_stmt_close($stmt);
+}
+
+// Delete User
+function deleteUser($conn, $ref) {
+  $sql = "DELETE FROM users WHERE user_id='" . $ref . "'";
+
+  if (mysqli_query($conn, $sql)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// Get Student Details
+function getUser($conn, $ref) {
+  $sql = "SELECT * FROM users WHERE user_id='" . $ref . "'";
+  $result = mysqli_query($conn, $sql);
+
+  if (mysqli_num_rows($result) === 1) {
+    $user = mysqli_fetch_assoc($result);
+    return $user;
+  }
+  return false;
+}
+
+// Get All Student Details
+function getAllUsers($conn) {
+  $sql = "SELECT * FROM users ORDER BY entry_date DESC";
+  $result = mysqli_query($conn, $sql);
+
+  $users = [];
+
+  if (mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+      $users[$row['user_id']] = $row;
+    }
+    return $users;
+  } 
+  return false;
+}
 
 ?>

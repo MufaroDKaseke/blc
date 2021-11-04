@@ -156,9 +156,28 @@
 }
 
 .navbar {
+  align-items: center;
   justify-content: space-between;
 
+  #toggleSidebar {
+    &:focus,
+    &:focus-within {
+      box-shadow: none;
+    }
+  }
+
+  #{&}-toggler-icon {
+    width: 20px;
+    height: 20px;
+  }
+
   .tools-nav {
+    font-size: .9rem;
+
+    @media screen and (max-width: $breakpoint-sm) {
+      font-size: .8rem;
+    }
+    
     .nav-link {
       color: $black;
       position: relative;
@@ -177,6 +196,12 @@
   }
 
   .user-nav {
+    font-size: .9rem;
+
+    @media screen and (max-width: $breakpoint-sm) {
+      font-size: .8rem;
+    }
+
     .dropdown-toggle {
       color: $black;
     }
@@ -198,6 +223,10 @@
   .notification {
     .alert {
       font-size: .9rem;
+
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: .8rem;
+      }
     }
   }
 }
@@ -265,5 +294,70 @@ Page Content
 
   table {
     font-size: .9rem;
+  }
+}
+
+
+/* Dashboard Welcome */
+
+.dash-welcome {
+  #{&}-msg {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background: darken($white, 5%);
+
+    i {
+      color: $color-7;
+      margin-bottom: 1rem;
+    }
+
+    h4 {
+      color: $color-4;
+      @include font("OpenSans-Bold");
+    }
+
+    p {
+
+    }
+  }
+
+  #{&}-info {
+    padding: 1rem;
+    background: darken($white, 5%);
+
+    @media screen and (max-width: $breakpoint-md) {
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      color: $color-4;
+      @include font("OpenSans-Bold");
+    }
+
+    p {
+      font-size: 1.2rem;
+      @include font("OpenSans-Bold");
+    }
+
+    a {
+      color: $color-5;
+      font-size: .85rem;
+
+      &:hover {
+        color: $primary;
+        transition: all .5s ease;
+      }
+    }
+  }
+}
+
+/* Profile */
+
+.dash-profile {
+
+  form {
+    label {
+      font-size: 14px;
+    }
   }
 }

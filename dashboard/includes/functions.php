@@ -18,6 +18,18 @@ function formatDate($date) {
   return $newDate->format('Y-m-d H:i:s');
 }
 
+// Get Month From Date
+function getMonth($date) {
+  $newDate = new DateTime($date);
+  return $newDate->format('M');
+}
+
+// Get Day Of Month From Date
+function getDay($date) {
+  $newDate = new DateTime($date);
+  return $newDate->format('d');
+}
+
 function deleteFiles($files) {
   foreach ($files as $file) {
     if (!unlink($file)) {

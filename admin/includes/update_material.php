@@ -8,7 +8,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'update_material') {
   $material = (object) $material;
 
   ?>
-  <form action="" method="post" enctype="multipart/form-data">
+  <form action="./materials.php" method="post" enctype="multipart/form-data">
     <div class="form-row">
       <div class="col-lg-6">
         <label for="">Preview</label>
@@ -31,11 +31,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'update_material') {
       <div class="col-12">
         <label for="">Category</label>
         <select name="category" class="form-control mb-2" id="exampleFormControlSelect1">
-          <option value="<?php echo $material->category;?>"><?php echo $material->category;?></option>
-          <option value="Any">Any</option>
-          <option value="Book">Books</option>
-          <option value="Notes">Notes</option>
-          <option value="Story">Story</option>
+          <option value="<?php echo $material->category;?>" selected><?php echo $material->category;?></option>
+          <option value="A1 German">A1 German</option>
+          <option value="A2 German">A2 German</option>
+          <option value="B1 German">B1 German</option>
         </select>
       </div>
       <div class="col-12">

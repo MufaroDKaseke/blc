@@ -11,7 +11,7 @@ function userNotLoggedIn() {
 }
 
 
-if (!$_SESSION['login_status'] && $_SESSION['user_type'] !== 'admin') {
+if (!$_SESSION['login_status'] || $_SESSION['user_type'] !== 'admin') {
   userNotLoggedIn();
 }
 ?>

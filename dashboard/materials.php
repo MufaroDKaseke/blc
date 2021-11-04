@@ -1,5 +1,8 @@
 <?php
 require '../includes/config.php';
+require './includes/user_session.php';
+require '../includes/db_connect.php';
+require './includes/functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +15,8 @@ require '../includes/config.php';
   <link rel="stylesheet" href="<?php echo ROOT?>/lib/font-awesome/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="<?php echo ROOT?>/dashboard/css/dashboard.css">
+  <!-- Favicons -->
+  <?php DISPLAY_ICONS();?>
 </head>
 <body>
 
@@ -32,9 +37,12 @@ require '../includes/config.php';
       <!-- End Of Header -->
 
       <!-- Notification Panel -->
-      <?php
-      require './includes/notification-panel.php';
-      ?>
+      <section class="notification-panel">
+        <div class="container-fluid">
+          <div class="row">
+          </div>
+        </div>
+      </section>
       <!--End Of Notification Panel -->
 
       <section class="main-content">
@@ -53,14 +61,38 @@ require '../includes/config.php';
                 </div>
                 <div class="dash-panel-content">
                   <div class="row">
+                    <?php
+
+                    $materials = getAllMaterials($conn);
+                    if ($materials !== false) {
+                      foreach ($materials as $material) {
+                        $material = (object) $material;
+                        ?>
+                        <div class="col-md-3 col-lg-2">
+                          <div class="dash-material">
+                            <img src="<?=ROOT;?>/uploads/captions/<?=$material->preview;?>" width="100%" alt="<?=$material->title;?>" class="img-fluid material-img">
+                            <a target="_blank" href="<?=ROOT;?>/uploads/materials/<?=$material->link;?>" class="material-name"><?=$material->title?></a>
+                            <span class="material-author"><?=$material->author;?></span>
+                          </div>
+                        </div>
+                        <?php     
+                      } 
+                    } else {
+                      ?>
+                      <div class="col">
+                        <p class="text-muted text-center">No Materials Yet</p>
+                      </div>
+                      <?php
+                    }
+                    ?>
                     
-                    <div class="col-md-3 col-lg-2">
+                <!--<div class="col-md-3 col-lg-2">
                       <div class="dash-material">
                         <img src="../img/material.jpg" width="100%" alt="" class="img-fluid material-img">
                         <a href="#" class="material-name">The best ever of all the best</a>
                         <span class="material-author">Tha that that</span>
                       </div>
-                    </div>
+                    </div>-->
 
                   </div>
                 </div>

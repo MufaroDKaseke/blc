@@ -1,5 +1,7 @@
 <?php
 require '../includes/config.php';
+require '../includes/db_connect.php';
+require '../includes/events_processes.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,6 +9,8 @@ require '../includes/config.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Babbel Language Center | Events</title>
+  <meta name="description" content="Coming Up Events. We have a variety of language events and seminars lined up for the year, you can rsvp to learn and explore language opportunities.">
+  <meta name="keywords" content="events,seminars,coming,up,Babbel,Language,Center,German,language,lesssons,learn,read,write,speak,Harare,Zimbabwe">
   <!-- Libraries -->
   <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../lib/font-awesome/css/all.min.css">
@@ -15,10 +19,41 @@ require '../includes/config.php';
   <link rel="stylesheet" href="../css/events.css">
   <!-- Favicons -->
   <?php DISPLAY_ICONS();?>
+
+  <!-- Indexing Details -->
+  <link href="https://blc.co.zw/events/" rel="canonical" />
+  <!-- Required Open Graph data -->
+  <meta property="og:title" content="Babbel Language Center - Language School" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="<?=ROOT;?>/img/logo/logo-text.png" />
+  <meta property="og:url" content="<?=ROOT;?>" />
+  <!-- Optional Open Graph data -->
+  <!--<meta property="og:audio" content="https://example.com/guide.mp3." />-->
+  <meta property="og:description" content="Coming Up Events. We have a variety of language events and seminars lined up for the year, you can rsvp to learn and explore language opportunities." />
+  <meta property="og:site_name" content="Babbel Language Center" />
+  <meta property="og:locale" content="en_us" />
+  <!--<meta property="og:video" content="https://example.com/guide.mp4" />-->
+  <!-- Find additional markup on https://ogp.me -->
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@babbellanguagecenter">
+  <meta name="twitter:domain" content="<?=ROOT;?>">
+  <meta name="twitter:title" content="Babbel Language Center | Events">
+  <meta name="twitter:description" content="Coming Up Events. We have a variety of language events and seminars lined up for the year, you can rsvp to learn and explore language opportunities.">
+  <meta name="twitter:image" content="<?=ROOT;?>/img/logo/logo-text.png">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <!-- End Of Indexing Details -->
+
 </head>
 <body>
+
+  <!-- Preloader -->
+  <?php
+  require '../includes/preloader.php';
+  ?>
   
-<header class="header">
+  <!-- Header -->
+  <header class="header">
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
       <div class="container">
         <a class="navbar-brand" href="<?=ROOT;?>">
@@ -44,7 +79,10 @@ require '../includes/config.php';
                 Library
               </a>
               <div class="dropdown-menu" aria-labelledby="libraryDropdown">
-                <a class="dropdown-item" href="<?=ROOT;?>/library/">Materials</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/">All Materials</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/A1-German.php">A1 German</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/A2-German.php">A2 German</a>
+                <a class="dropdown-item" href="<?=ROOT;?>/library/B1-German.php">B1 German</a>
               </div>
             </li>
             <li class="nav-item active">
@@ -82,7 +120,41 @@ require '../includes/config.php';
   <section class="events">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4">
+        <?php
+
+        $events = getAllEvents($conn);
+
+        if ($events !== false) {
+          $events = array_slice($events, 0, 3);
+          foreach ($events as $event) {
+            $event = (object) $event;
+            ?>
+            <div class="col-lg-4">
+              <div class="event-container">
+                <div class="card">
+                  <img src="<?=ROOT;?>/uploads/captions/<?=$event->caption;?>" alt="" class="event-img card-img-top">
+                  <div class="event-date">
+                    <span class="month"><?=getMonth($event->date);?></span>
+                    <span class="day"><?=getDay($event->date);?></span>
+                  </div>
+                  <div class="card-body">
+                    <a href="<?=$event->link;?>" class="event-name h4 card-title"><?=$event->title;?></a>
+                    <p class="event-desc small"><?=$event->description;?></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php
+          }
+        } else {
+          ?>
+          <div class="col">
+            <p class="text-muted text-center">No Events Yet</p>
+          </div>
+          <?php
+        }
+        ?>
+    <!--<div class="col-lg-4">
           <div class="event-container">
             <div class="card">
               <img src="../img/hero.jpg" alt="" class="event-img card-img-top">
@@ -96,165 +168,17 @@ require '../includes/config.php';
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="event-container">
-            <div class="card">
-              <img src="../img/hero.jpg" alt="" class="event-img card-img-top">
-              <div class="event-date">
-                <span class="month">OCT</span>
-                <span class="day">23</span>
-              </div>
-              <div class="card-body">
-                <a href="#" class="event-name h4 card-title">The best of events</a>
-                <p class="event-desc small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, molestiae.</p>
-              </div>
-            </div>
-          </div>
-        </div> 
-        <div class="col-lg-4">
-          <div class="event-container">
-            <div class="card">
-              <img src="../img/hero.jpg" alt="" class="event-img card-img-top">
-              <div class="event-date">
-                <span class="month">OCT</span>
-                <span class="day">23</span>
-              </div>
-              <div class="card-body">
-                <a href="#" class="event-name h4 card-title">The best of events</a>
-                <p class="event-desc small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, molestiae.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="event-container">
-            <div class="card">
-              <img src="../img/hero.jpg" alt="" class="event-img card-img-top">
-              <div class="event-date">
-                <span class="month">OCT</span>
-                <span class="day">23</span>
-              </div>
-              <div class="card-body">
-                <a href="#" class="event-name h4 card-title">The best of events</a>
-                <p class="event-desc small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, molestiae.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="event-container">
-            <div class="card">
-              <img src="../img/hero.jpg" alt="" class="event-img card-img-top">
-              <div class="event-date">
-                <span class="month">OCT</span>
-                <span class="day">23</span>
-              </div>
-              <div class="card-body">
-                <a href="#" class="event-name h4 card-title">The best of events</a>
-                <p class="event-desc small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, molestiae.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="event-container">
-            <div class="card">
-              <img src="../img/hero.jpg" alt="" class="event-img card-img-top">
-              <div class="event-date">
-                <span class="month">OCT</span>
-                <span class="day">23</span>
-              </div>
-              <div class="card-body">
-                <a href="#" class="event-name h4 card-title">The best of events</a>
-                <p class="event-desc small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, molestiae.</p>
-              </div>
-            </div>
-          </div>
-        </div>    
+        </div>-->  
       </div>
     </div>
   </section>
   
   
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-3">
-          <div class="footer-about">
-            <img src="../img/logo.png" alt="" class="img-fluid">
-            <p class="small">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo itaque maxime temporibus, quisquam voluptas praesentium corporis quaerat eveniet impedit reiciendis.</p>
-            <div class="footer-social">
-              <ul class="nav justify-content-center">
-                <li>
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                </li>                         
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="footer-links">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">About</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Services</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Pricing</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Library</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Events</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="footer-contact">
-            <h4>Contact Us</h4>
-            <ul class="nav flex-column">
-              <li><i class="fa fa-envelope"></i><a href="#">info@blc.co.zw</a></li>
-              <li><i class="fa fa-phone"></i><a href="#">+263 87 934 43483</a></li>
-              <li><i class="fa fa-map-marked"></i><a href="#">13F Fraser St, Parktown</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="footer-subscribe">
-            <h4>Sign Up For Updates</h4>
-            <form action="">
-              <input type="email" name="email" id="" class="form-control" placeholder="Email*">
-              <button type="submit" class="blc-btn btn">Subscribe</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="footer-copyright text-center">
-            <span>&copy; All Right Preserved</span> | <span>by <a href="#">Mufaro D Kaseke</a></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer -->
+  <?php
+  require_once '../includes/footer.php';
+  ?>
+  <!-- End Of Footer -->
   <script src="../lib/jquery/jquery-3.6.0.min.js"></script>
   <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../js/main.js"></script>
